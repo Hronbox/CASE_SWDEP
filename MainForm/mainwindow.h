@@ -5,6 +5,7 @@
 #include <QStackedLayout>
 #include <QFormLayout>
 #include <QGridLayout>
+#include <containerwidget.h>
 
 
 namespace Ui {
@@ -18,9 +19,20 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    ContainerWidget *container = new ContainerWidget;
 
 private slots:
     void on_pushButton_3_clicked();
+
+    void on_pushButton_3_pressed();
+
+    void on_pushButton_3_released();
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_radioButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -21,44 +21,44 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form
+class Ui_TableForm
 {
 public:
     QTableView *tableView;
     QLabel *label;
     QPushButton *pushButton;
 
-    void setupUi(QWidget *Form)
+    void setupUi(QWidget *TableForm)
     {
-        if (Form->objectName().isEmpty())
-            Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(124, 160);
-        tableView = new QTableView(Form);
+        if (TableForm->objectName().isEmpty())
+            TableForm->setObjectName(QStringLiteral("TableForm"));
+        TableForm->resize(124, 160);
+        tableView = new QTableView(TableForm);
         tableView->setObjectName(QStringLiteral("tableView"));
         tableView->setGeometry(QRect(0, 30, 121, 91));
-        label = new QLabel(Form);
+        label = new QLabel(TableForm);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(40, 10, 46, 13));
-        pushButton = new QPushButton(Form);
+        pushButton = new QPushButton(TableForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(20, 130, 75, 23));
 
-        retranslateUi(Form);
+        retranslateUi(TableForm);
 
-        QMetaObject::connectSlotsByName(Form);
+        QMetaObject::connectSlotsByName(TableForm);
     } // setupUi
 
-    void retranslateUi(QWidget *Form)
+    void retranslateUi(QWidget *TableForm)
     {
-        Form->setWindowTitle(QApplication::translate("Form", "Form", 0));
-        label->setText(QApplication::translate("Form", "TextLabel", 0));
-        pushButton->setText(QApplication::translate("Form", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0));
+        TableForm->setWindowTitle(QApplication::translate("TableForm", "Form", 0));
+        label->setText(QApplication::translate("TableForm", "TextLabel", 0));
+        pushButton->setText(QApplication::translate("TableForm", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Form: public Ui_Form {};
+    class TableForm: public Ui_TableForm {};
 } // namespace Ui
 
 QT_END_NAMESPACE

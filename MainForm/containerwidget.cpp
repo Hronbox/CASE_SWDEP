@@ -1,22 +1,34 @@
 #include "containerwidget.h"
 
+#include "tableformwidget.h"
 
 ContainerWidget::ContainerWidget(QWidget *parent) :
     QWidget(parent)
 {
 //    formlayout = new QFormLayout();
-//    setLayout(formlayout);
+    //    setLayout(formlayout);
+    trig=false;
 }
 
+void ContainerWidget::changetrigtrue()
+{
+    trig = true;
+}
+
+void ContainerWidget::changetrigfalse()
+{
+    trig = false;
+}
 void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
 {
-    QLabel *metka =new QLabel("sad",this);
-    //metka->move(mouseEvent->x(),mouseEvent->y());
-    metka->move(10,10);
+    if(trig == true)
+    {
+    TableFormWidget *tableForm = new TableFormWidget(this);
+    tableForm->move(mouseEvent->x(),mouseEvent->y());
 
+    tableForm->show();
+    }
 
-   // TableForm *frame = new TableForm(this);
-    //formlayout->addWidget(metka);
 }
 
 void ContainerWidget::mouseMoveEvent(QMouseEvent *mouseEvent)

@@ -5,6 +5,7 @@
 #include <QFormLayout>
 #include <QMouseEvent>
 #include <QLabel>
+#include <QScrollArea>
 
 class ContainerWidget : public QWidget
 {
@@ -12,11 +13,17 @@ class ContainerWidget : public QWidget
 public:
     explicit ContainerWidget(QWidget *parent = 0);
 
+    QWidget *base;
+    bool trig;
+    void changetrigtrue();
+    void changetrigfalse();
 protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
     virtual void mouseMoveEvent ( QMouseEvent *mouseEvent );
     virtual void mouseReleaseEvent ( QMouseEvent *mouseEvent );
     QFormLayout *formlayout;
+
+
 
 signals:
 

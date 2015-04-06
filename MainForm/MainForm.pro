@@ -14,10 +14,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    containerwidget.cpp
+    containerwidget.cpp \
+    tableformwidget.cpp \
+    tablesetting.cpp
 
 HEADERS  += mainwindow.h \
-    containerwidget.h
+    containerwidget.h \
+    tableformwidget.h \
+    tablesetting.h
 
 FORMS    += mainwindow.ui \
-    TableForm.ui
+    TableForm.ui \
+    tablesetting.ui

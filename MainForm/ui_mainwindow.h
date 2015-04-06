@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -31,6 +32,10 @@ public:
     QPushButton *pushButton_3;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QRadioButton *radioButton_3;
+    QRadioButton *radioButton_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -54,6 +59,18 @@ public:
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 329, 359));
         scrollArea->setWidget(scrollAreaWidgetContents);
+        radioButton = new QRadioButton(centralWidget);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(350, 90, 82, 17));
+        radioButton_2 = new QRadioButton(centralWidget);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(350, 110, 82, 17));
+        radioButton_3 = new QRadioButton(centralWidget);
+        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setGeometry(QRect(350, 150, 111, 17));
+        radioButton_4 = new QRadioButton(centralWidget);
+        radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+        radioButton_4->setGeometry(QRect(350, 130, 82, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -78,6 +95,10 @@ public:
         MainWindow->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
         pushButton_3->setText(QApplication::translate("MainWindow", "Ta\320\261\320\273\320\270\321\206\320\260", 0));
+        radioButton->setText(QApplication::translate("MainWindow", "\320\242\320\260\320\261\320\273\320\270\321\206\320\260", 0));
+        radioButton_2->setText(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:1", 0));
+        radioButton_3->setText(QApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", 0));
+        radioButton_4->setText(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:N", 0));
     } // retranslateUi
 
 };
