@@ -9,12 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    QGridLayout *grid = new QGridLayout();
-//    grid->addWidget(new ContainerWidget);
-//    ui->scrollArea->setLayout(grid);
-
-
-
     ui->scrollArea->setWidget(container);
     ui->scrollArea->setWidgetResizable(true);
 }

@@ -5,8 +5,6 @@
 ContainerWidget::ContainerWidget(QWidget *parent) :
     QWidget(parent)
 {
-//    formlayout = new QFormLayout();
-    //    setLayout(formlayout);
     trig=false;
 }
 

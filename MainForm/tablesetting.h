@@ -1,31 +1,38 @@
 #ifndef TABLESETTING_H
 #define TABLESETTING_H
 
-#include <QWidget>
-#include <QStringList>
+#include <QDialog>
 #include <QString>
-#include <QDebug>
+#include <QModelIndex>
+#include <QVector>
 
-#include "QStandardItemModel"
+#include"QStandardItemModel"
+#include "QStandardItem"
+#include "typeattreditordelegate.h"
 
 namespace Ui {
 class TableSetting;
 }
 
-class TableSetting : public QWidget
+class TableSetting : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit TableSetting(QWidget *parent = 0);
     ~TableSetting();
+
     QStandardItemModel *model;
+    QStandardItem *item;
+
+    QString tableName() const;
+    QStandardItemModel *table() const;
+
+
+    QVector <Combobox> V;
+
 
 private slots:
-
-    void on_Cancel_clicked();
-
-    void on_Ok_clicked();
 
 private:
     Ui::TableSetting *ui;

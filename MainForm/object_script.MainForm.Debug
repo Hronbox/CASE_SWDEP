@@ -1,0 +1,13 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/containerwidget.o
+./debug/tableformwidget.o
+./debug/tablesetting.o
+./debug/typeattreditordelegate.o
+./debug/moc_mainwindow.o
+./debug/moc_containerwidget.o
+./debug/moc_tableformwidget.o
+./debug/moc_tablesetting.o
+./debug/moc_typeattreditordelegate.o
+);

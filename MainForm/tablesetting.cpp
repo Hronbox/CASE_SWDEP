@@ -2,16 +2,19 @@
 #include "ui_tablesetting.h"
 
 TableSetting::TableSetting(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::TableSetting)
 {
-    QStandardItemModel *model;
     ui->setupUi(this);
     QStringList horizontalHeader;
     horizontalHeader.append("Attributs");
     horizontalHeader.append("type");
     model= new QStandardItemModel;
     model->setHorizontalHeaderLabels(horizontalHeader);
+    item = new QStandardItem("111");
+    model->setItem(0, 0, item);
+    item = new QStandardItem("111");
+    model->setItem(0, 1, item);
     ui->tableView->setModel(model);
 
 }
@@ -19,17 +22,18 @@ TableSetting::TableSetting(QWidget *parent) :
 TableSetting::~TableSetting()
 {
     delete ui;
+
 }
 
-
-void TableSetting::on_Cancel_clicked()
+QString TableSetting::tableName() const
 {
-
+    QString name;
+    name = ui->lineEdit->text();
+    return name;
 }
 
-void TableSetting::on_Ok_clicked()
+QStandardItemModel *TableSetting::table() const
 {
-    QString lab;
-    lab = ui->lineEdit->text();
-    qDebug()<<lab;
+    return model;
 }
+

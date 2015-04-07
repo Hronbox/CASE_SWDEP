@@ -1,0 +1,13 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/containerwidget.o
+./release/tableformwidget.o
+./release/tablesetting.o
+./release/typeattreditordelegate.o
+./release/moc_mainwindow.o
+./release/moc_containerwidget.o
+./release/moc_tableformwidget.o
+./release/moc_tablesetting.o
+./release/moc_typeattreditordelegate.o
+);

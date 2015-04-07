@@ -158,6 +158,7 @@ Makefile: MainForm.pro ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++/qma
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/resolve_config.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds_post.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_post.prf \
+		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/c++11.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/win32/rtti.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/precompile_header.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/warn_on.prf \
@@ -277,6 +278,7 @@ Makefile: MainForm.pro ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++/qma
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/resolve_config.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds_post.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_post.prf:
+../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/c++11.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/win32/rtti.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/precompile_header.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/warn_on.prf:
