@@ -6,12 +6,17 @@
 #include <QMouseEvent>
 #include <QLabel>
 #include <QScrollArea>
+#include <QApplication>
+#include <QDebug>
+#include <QGraphicsItem>
+#include "tableformwidget.h"
 
 class ContainerWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit ContainerWidget(QWidget *parent = 0);
+
 
     QWidget *base;
     bool trig;
@@ -23,12 +28,14 @@ protected:
     virtual void mouseReleaseEvent ( QMouseEvent *mouseEvent );
     QFormLayout *formlayout;
 
-
-
 signals:
+    void sig();
 
-public slots:
+private slots:
 
+private:
+    std::vector< TableFormWidget * > tableForms;
+    TableFormWidget *pressedTableForm;
 };
 
 #endif // CONTAINERWIDGET_H

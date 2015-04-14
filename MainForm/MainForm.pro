@@ -3,6 +3,7 @@
 # Project created by QtCreator 2015-04-05T18:36:50
 #
 #-------------------------------------------------
+include(insertremove/insertremove.pri)
 
 QT       += core gui
 
@@ -20,13 +21,15 @@ SOURCES += main.cpp\
     containerwidget.cpp \
     tableformwidget.cpp \
     tablesetting.cpp \
-    typeattreditordelegate.cpp
+    typeattreditordelegate.cpp \
+    labeldelegate.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
     tableformwidget.h \
     tablesetting.h \
-    typeattreditordelegate.h
+    typeattreditordelegate.h \
+    labeldelegate.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

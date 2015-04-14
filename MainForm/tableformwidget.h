@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QString>
 #include <QVector>
+#include <QMouseEvent>
+#include <QDebug>
 
 #include "typeattreditordelegate.h"
 
@@ -21,8 +23,14 @@ public:
     QVector <Combobox> V;
 
 
+    int mousePressPointX() const {return xpos;}
+    int mousePressPointY() const {return ypos;}
+
 signals:
     void sendData(QString str);
+
+
+protected:
 
 public slots:
 
@@ -32,6 +40,10 @@ private slots:
 
 private:
     Ui::TableForm *ui;
+    int xpos;
+    int ypos;
+    bool _isBeingDragged;
+
 };
 
 

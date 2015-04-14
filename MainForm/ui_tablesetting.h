@@ -32,6 +32,7 @@ public:
     QTableView *tableView;
     QPushButton *PlusItem;
     QPushButton *MinusItem;
+    QLineEdit *lineEdit_2;
 
     void setupUi(QDialog *TableSetting)
     {
@@ -54,10 +55,19 @@ public:
         tableView->setGeometry(QRect(10, 70, 381, 131));
         PlusItem = new QPushButton(TableSetting);
         PlusItem->setObjectName(QStringLiteral("PlusItem"));
-        PlusItem->setGeometry(QRect(100, 210, 75, 23));
+        PlusItem->setGeometry(QRect(130, 210, 31, 23));
+        QIcon icon;
+        icon.addFile(QStringLiteral("ico/add.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        PlusItem->setIcon(icon);
         MinusItem = new QPushButton(TableSetting);
         MinusItem->setObjectName(QStringLiteral("MinusItem"));
-        MinusItem->setGeometry(QRect(190, 210, 75, 23));
+        MinusItem->setGeometry(QRect(180, 210, 31, 23));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("ico/subtract.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        MinusItem->setIcon(icon1);
+        lineEdit_2 = new QLineEdit(TableSetting);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(10, 220, 113, 20));
 
         retranslateUi(TableSetting);
         QObject::connect(buttonBox, SIGNAL(accepted()), TableSetting, SLOT(accept()));
@@ -70,8 +80,8 @@ public:
     {
         TableSetting->setWindowTitle(QApplication::translate("TableSetting", "Dialog", 0));
         label->setText(QApplication::translate("TableSetting", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
-        PlusItem->setText(QApplication::translate("TableSetting", "+", 0));
-        MinusItem->setText(QApplication::translate("TableSetting", "-", 0));
+        PlusItem->setText(QString());
+        MinusItem->setText(QString());
     } // retranslateUi
 
 };

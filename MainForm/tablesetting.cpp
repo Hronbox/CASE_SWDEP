@@ -11,11 +11,10 @@ TableSetting::TableSetting(QWidget *parent) :
     horizontalHeader.append("type");
     model= new QStandardItemModel;
     model->setHorizontalHeaderLabels(horizontalHeader);
-    item = new QStandardItem("111");
-    model->setItem(0, 0, item);
-    item = new QStandardItem("111");
-    model->setItem(0, 1, item);
     ui->tableView->setModel(model);
+
+
+
 
 }
 
@@ -37,3 +36,28 @@ QStandardItemModel *TableSetting::table() const
     return model;
 }
 
+
+void TableSetting::on_PlusItem_clicked()
+{
+
+
+int count=model->rowCount();
+Combobox cb;
+cb.c=1;
+cb.r=count;
+cb.elemnt.push_back("int");
+cb.elemnt.push_back("varchar");
+cb.elemnt.push_back("bool");
+
+V.push_back(cb);
+
+LabelDelegate * tr = new LabelDelegate(V2,ui->tableView);
+ui->tableView->setItemDelegate(tr) ;
+
+TypeAttrEditorDelegate * cl = new TypeAttrEditorDelegate(V,ui->tableView);
+ui->tableView->setItemDelegate(cl) ;
+
+item = new QStandardItem("");
+model->insertRow(count,item);
+ui->tableView->setModel(model);
+}

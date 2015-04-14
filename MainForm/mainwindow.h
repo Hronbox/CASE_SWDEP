@@ -6,6 +6,7 @@
 #include <QFormLayout>
 #include <QGridLayout>
 #include <containerwidget.h>
+#include "tableformwidget.h"
 
 
 namespace Ui {
@@ -20,8 +21,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     ContainerWidget *container = new ContainerWidget;
+    TableFormWidget *tableForm = new TableFormWidget;
 
 private slots:
+
     void on_pushButton_3_clicked();
 
     void on_pushButton_3_pressed();
@@ -33,6 +36,10 @@ private slots:
     void on_radioButton_2_clicked();
 
     void on_radioButton_3_clicked();
+
+    void on_action_7_triggered();
+
+    void setgeometryscroll();
 
 private:
     Ui::MainWindow *ui;

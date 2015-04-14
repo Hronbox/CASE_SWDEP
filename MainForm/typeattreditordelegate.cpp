@@ -19,8 +19,7 @@ QWidget *TypeAttrEditorDelegate::createEditor(QWidget *parent, const QStyleOptio
         editor->addItems(V1[i].elemnt);
 
 
-    QObject::connect(editor, SIGNAL(editTextChanged(QString)),
-                     this, SLOT(commitAndCloseEditor()));
+   // QObject::connect(editor, SIGNAL(editTextChanged(QString)),this, SLOT(commitAndCloseEditor()));
 
     return editor;
     }
@@ -73,7 +72,7 @@ void TypeAttrEditorDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
         if ((index.row()==V1[i].r)&&(index.column()==V1[i].c))
         {
             QComboBox *comboBox = static_cast< QComboBox*>(editor);
-            int value=comboBox->currentText().toInt();
+            QString value=comboBox->currentText();
             model->setData(index, value, Qt::EditRole);
         }
     }
