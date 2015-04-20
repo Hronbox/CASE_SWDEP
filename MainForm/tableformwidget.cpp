@@ -7,13 +7,12 @@ TableFormWidget::TableFormWidget(QWidget *parent) :
     ui(new Ui::TableForm)
 {
     ui->setupUi(this);
-    QStandardItemModel *model;
     QStringList horizontalHeader;
     horizontalHeader.append("Attributs");
     horizontalHeader.append("type");
-    model= new QStandardItemModel;
+    model= new QStandardItemModel();
     model->setHorizontalHeaderLabels(horizontalHeader);
-    ui->tableView->setModel(model);
+    ui->tableViewWidget->setModel(model);
 }
 
 TableFormWidget::~TableFormWidget()
@@ -25,6 +24,7 @@ TableFormWidget::~TableFormWidget()
 void TableFormWidget::on_pushButton_clicked()
 {
     TableSetting setting;
+    setting.SetModelinSetting(model);
     setting.show();
     if(setting.exec() == QDialog::Accepted)
     {
@@ -33,7 +33,7 @@ void TableFormWidget::on_pushButton_clicked()
         ui->label->setText(tabname);
         QStandardItemModel *model= new QStandardItemModel;
         model = setting.table();
-        ui->tableView->setModel(model);
+        ui->tableViewWidget->setModel(model);
     }
 
 }

@@ -1,0 +1,10 @@
+CASE_SWDEP.pro.user
+Makefile
+MainForm/object_script.MainForm.Release
+MainForm/object_script.MainForm.Debug
+MainForm/Makefile.Release
+MainForm/Makefile.Debug
+MainForm/Makefile
+MainForm/MainForm.pro.user
+MainForm/release/*
+MainForm/debug/*

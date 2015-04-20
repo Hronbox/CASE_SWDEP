@@ -6,8 +6,10 @@
 #include <QVector>
 #include <QMouseEvent>
 #include <QDebug>
+#include<QStandardItemModel>
 
 #include "typeattreditordelegate.h"
+#include "tablesetting.h"
 
 namespace Ui {
 class TableForm;
@@ -26,6 +28,8 @@ public:
     int mousePressPointX() const {return xpos;}
     int mousePressPointY() const {return ypos;}
 
+
+
 signals:
     void sendData(QString str);
 
@@ -43,7 +47,7 @@ private:
     int xpos;
     int ypos;
     bool _isBeingDragged;
-
+    QStandardItemModel *model;
 };
 
 

@@ -21,15 +21,13 @@ SOURCES += main.cpp\
     containerwidget.cpp \
     tableformwidget.cpp \
     tablesetting.cpp \
-    typeattreditordelegate.cpp \
-    labeldelegate.cpp
+    typeattreditordelegate.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
     tableformwidget.h \
     tablesetting.h \
-    typeattreditordelegate.h \
-    labeldelegate.h
+    typeattreditordelegate.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

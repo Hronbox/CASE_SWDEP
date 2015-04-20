@@ -155,7 +155,6 @@ Makefile: MainForm.pro ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++/qma
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_pre.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/win32/default_pre.prf \
-		insertremove/insertremove.pri \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/resolve_config.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds_post.prf \
 		../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_post.prf \
@@ -276,7 +275,6 @@ Makefile: MainForm.pro ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++/qma
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_pre.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/win32/default_pre.prf:
-insertremove/insertremove.pri:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/resolve_config.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds_post.prf:
 ../../../../Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_post.prf:

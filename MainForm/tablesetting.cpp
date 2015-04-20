@@ -5,16 +5,14 @@ TableSetting::TableSetting(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TableSetting)
 {
+
     ui->setupUi(this);
     QStringList horizontalHeader;
     horizontalHeader.append("Attributs");
     horizontalHeader.append("type");
-    model= new QStandardItemModel;
-    model->setHorizontalHeaderLabels(horizontalHeader);
-    ui->tableView->setModel(model);
-
-
-
+    model1= new QStandardItemModel;
+    model1->setHorizontalHeaderLabels(horizontalHeader);
+    ui->tableViewSitting->setModel(model1);
 
 }
 
@@ -22,6 +20,12 @@ TableSetting::~TableSetting()
 {
     delete ui;
 
+
+}
+
+void TableSetting::SetModelinSetting(QStandardItemModel *modelset)
+{
+  ui->tableViewSitting->setModel(modelset);
 }
 
 QString TableSetting::tableName() const
@@ -33,15 +37,14 @@ QString TableSetting::tableName() const
 
 QStandardItemModel *TableSetting::table() const
 {
-    return model;
+    return model1;
 }
 
 
 void TableSetting::on_PlusItem_clicked()
 {
-
-
-int count=model->rowCount();
+//model1 = ui->tableViewSitting->model()
+count = model1->rowCount();
 Combobox cb;
 cb.c=1;
 cb.r=count;
@@ -51,13 +54,10 @@ cb.elemnt.push_back("bool");
 
 V.push_back(cb);
 
-LabelDelegate * tr = new LabelDelegate(V2,ui->tableView);
-ui->tableView->setItemDelegate(tr) ;
+TypeAttrEditorDelegate * cl = new TypeAttrEditorDelegate(V,ui->tableViewSitting);
+ui->tableViewSitting->setItemDelegate(cl) ;
 
-TypeAttrEditorDelegate * cl = new TypeAttrEditorDelegate(V,ui->tableView);
-ui->tableView->setItemDelegate(cl) ;
-
-item = new QStandardItem("");
-model->insertRow(count,item);
-ui->tableView->setModel(model);
+item = new QStandardItem(" ");
+model1->insertRow(count,item);
+ui->tableViewSitting->setModel(model1);
 }

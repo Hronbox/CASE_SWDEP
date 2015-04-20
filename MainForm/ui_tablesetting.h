@@ -29,10 +29,9 @@ public:
     QDialogButtonBox *buttonBox;
     QLineEdit *lineEdit;
     QLabel *label;
-    QTableView *tableView;
+    QTableView *tableViewSitting;
     QPushButton *PlusItem;
     QPushButton *MinusItem;
-    QLineEdit *lineEdit_2;
 
     void setupUi(QDialog *TableSetting)
     {
@@ -50,9 +49,9 @@ public:
         label = new QLabel(TableSetting);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 30, 101, 16));
-        tableView = new QTableView(TableSetting);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(10, 70, 381, 131));
+        tableViewSitting = new QTableView(TableSetting);
+        tableViewSitting->setObjectName(QStringLiteral("tableViewSitting"));
+        tableViewSitting->setGeometry(QRect(10, 70, 381, 131));
         PlusItem = new QPushButton(TableSetting);
         PlusItem->setObjectName(QStringLiteral("PlusItem"));
         PlusItem->setGeometry(QRect(130, 210, 31, 23));
@@ -65,9 +64,6 @@ public:
         QIcon icon1;
         icon1.addFile(QStringLiteral("ico/subtract.ico"), QSize(), QIcon::Normal, QIcon::Off);
         MinusItem->setIcon(icon1);
-        lineEdit_2 = new QLineEdit(TableSetting);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(10, 220, 113, 20));
 
         retranslateUi(TableSetting);
         QObject::connect(buttonBox, SIGNAL(accepted()), TableSetting, SLOT(accept()));

@@ -9,6 +9,9 @@
 #include <QApplication>
 #include <QDebug>
 #include <QGraphicsItem>
+#include <QWheelEvent>
+#include <QEvent>
+
 #include "tableformwidget.h"
 
 class ContainerWidget : public QWidget
@@ -26,6 +29,8 @@ protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
     virtual void mouseMoveEvent ( QMouseEvent *mouseEvent );
     virtual void mouseReleaseEvent ( QMouseEvent *mouseEvent );
+    void paintEvent ( QPaintEvent * event );
+    void wheelEvent ( QWheelEvent * event );
     QFormLayout *formlayout;
 
 signals:
@@ -36,6 +41,7 @@ private slots:
 private:
     std::vector< TableFormWidget * > tableForms;
     TableFormWidget *pressedTableForm;
+    qreal scale;
 };
 
 #endif // CONTAINERWIDGET_H

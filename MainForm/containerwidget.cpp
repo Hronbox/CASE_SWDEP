@@ -50,4 +50,19 @@ void ContainerWidget::mouseReleaseEvent(QMouseEvent *mouseEvent)
     emit sig();
 }
 
+void ContainerWidget::wheelEvent(QWheelEvent *event)
+{
+
+    scale+=(event->delta()/120);
+
+}
+
+void ContainerWidget::paintEvent(QPaintEvent *event)
+{
+    QPainter p;
+    p.scale(scale,scale);
+
+}
+
+
 

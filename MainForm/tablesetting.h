@@ -6,12 +6,11 @@
 #include <QModelIndex>
 #include <QVector>
 #include <QStringList>
+#include <QStandardItem>
+#include <QAbstractTableModel>
 
-#include"QStandardItemModel"
-#include "QStandardItem"
 #include "typeattreditordelegate.h"
-#include "labeldelegate.h"
-#include "QAbstractTableModel"
+
 
 namespace Ui {
 class TableSetting;
@@ -23,10 +22,11 @@ class TableSetting : public QDialog
 public:
     explicit TableSetting(QWidget *parent = 0);
     ~TableSetting();
+    void SetModelinSetting(QStandardItemModel *modelset);
 
 
 
-    QStandardItemModel *model;
+
     QStandardItem *item;
 
     QString tableName() const;
@@ -36,7 +36,6 @@ public:
 
 
     QVector <Combobox> V;
-    QVector <LineEdit> V2;
 
 
 private slots:
@@ -45,6 +44,8 @@ private slots:
 
 private:
     Ui::TableSetting *ui;
+    QStandardItemModel *model1;
+    int count;
 };
 
 #endif // TABLESETTING_H

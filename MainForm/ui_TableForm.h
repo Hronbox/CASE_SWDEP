@@ -25,7 +25,7 @@ QT_BEGIN_NAMESPACE
 class Ui_TableForm
 {
 public:
-    QTableView *tableView;
+    QTableView *tableViewWidget;
     QLabel *label;
     QPushButton *pushButton;
     QFrame *line;
@@ -38,9 +38,9 @@ public:
         if (TableForm->objectName().isEmpty())
             TableForm->setObjectName(QStringLiteral("TableForm"));
         TableForm->resize(151, 181);
-        tableView = new QTableView(TableForm);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(10, 30, 131, 91));
+        tableViewWidget = new QTableView(TableForm);
+        tableViewWidget->setObjectName(QStringLiteral("tableViewWidget"));
+        tableViewWidget->setGeometry(QRect(10, 30, 131, 91));
         label = new QLabel(TableForm);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 10, 46, 13));

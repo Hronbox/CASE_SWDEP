@@ -5,6 +5,8 @@
 #include <QStackedLayout>
 #include <QFormLayout>
 #include <QGridLayout>
+#include <QMouseEvent>
+
 #include <containerwidget.h>
 #include "tableformwidget.h"
 
@@ -40,6 +42,7 @@ private slots:
     void on_action_7_triggered();
 
     void setgeometryscroll();
+
 
 private:
     Ui::MainWindow *ui;

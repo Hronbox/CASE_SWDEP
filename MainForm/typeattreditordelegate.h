@@ -7,6 +7,7 @@
 #include <QStringList>
 #include <QPainter>
 #include <QComboBox>
+#include <QLineEdit>
 
 struct Combobox{
 int r;

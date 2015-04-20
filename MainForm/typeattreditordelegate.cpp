@@ -75,5 +75,10 @@ void TypeAttrEditorDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
             QString value=comboBox->currentText();
             model->setData(index, value, Qt::EditRole);
         }
+        if (index.column()==0)
+                {
+
+                    model->setData(index, (static_cast<QLineEdit*>( editor ))->text(), Qt::EditRole);
+                }
     }
 }
