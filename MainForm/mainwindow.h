@@ -7,8 +7,10 @@
 #include <QGridLayout>
 #include <QMouseEvent>
 
-#include <containerwidget.h>
+#include "containerwidget.h"
 #include "tableformwidget.h"
+#include "widgetgenerationscript.h"
+
 
 
 namespace Ui {
@@ -24,6 +26,7 @@ public:
     ~MainWindow();
     ContainerWidget *container = new ContainerWidget;
     TableFormWidget *tableForm = new TableFormWidget;
+    WidgetGenerationScript *ScriptForm = new WidgetGenerationScript;
 
 private slots:
 
@@ -43,6 +46,8 @@ private slots:
 
     void setgeometryscroll();
 
+
+    void on_action_5_triggered();
 
 private:
     Ui::MainWindow *ui;

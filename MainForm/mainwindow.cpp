@@ -92,3 +92,10 @@ void MainWindow::on_action_7_triggered()
     close();
 }
 
+
+void MainWindow::on_action_5_triggered()
+{
+    WidgetGenerationScript *ScriptForm = new WidgetGenerationScript();
+    ScriptForm->loadPlugins();
+    ScriptForm->show();
+}

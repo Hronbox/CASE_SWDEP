@@ -11,6 +11,7 @@
 #include <QGraphicsItem>
 #include <QWheelEvent>
 #include <QEvent>
+#include <QPaintEvent>
 
 #include "tableformwidget.h"
 

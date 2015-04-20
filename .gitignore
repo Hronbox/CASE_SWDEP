@@ -8,3 +8,13 @@ MainForm/Makefile
 MainForm/MainForm.pro.user
 MainForm/release/*
 MainForm/debug/*
+Postgresql/debug/*
+Postgresql/release/*
+Postgresql/Makefile
+Postgresql/Makefile.Debug
+Postgresql/Makefile.Release
+Sqlite/debug/*
+Sqlite/release/*
+Sqlite/Makefile
+Sqlite/Makefile.Debug
+Sqlite/Makefile.Release

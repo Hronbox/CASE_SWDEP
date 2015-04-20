@@ -1,5 +1,6 @@
 #include "tablesetting.h"
 #include "ui_tablesetting.h"
+#include <QDebug>
 
 TableSetting::TableSetting(QWidget *parent) :
     QDialog(parent),
@@ -19,12 +20,11 @@ TableSetting::TableSetting(QWidget *parent) :
 TableSetting::~TableSetting()
 {
     delete ui;
-
-
 }
 
 void TableSetting::SetModelinSetting(QStandardItemModel *modelset)
 {
+  //model1=modelset;
   ui->tableViewSitting->setModel(modelset);
 }
 

@@ -60,6 +60,7 @@ void ContainerWidget::wheelEvent(QWheelEvent *event)
 void ContainerWidget::paintEvent(QPaintEvent *event)
 {
     QPainter p;
+    p.begin(this);
     p.scale(scale,scale);
 
 }
