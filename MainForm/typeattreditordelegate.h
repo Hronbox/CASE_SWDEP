@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QComboBox>
 #include <QLineEdit>
+#include <QCheckBox>
 
 struct Combobox{
 int r;
@@ -33,11 +34,12 @@ public:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     void setEditorData(QWidget *editor,const QModelIndex &index) const;
     void setModelData(QWidget *editor, QAbstractItemModel *model,const QModelIndex &index) const;
+    void updateEditorGeometry(QWidget *editor,const QStyleOptionViewItem &option,const QModelIndex &index) const;
 
 signals:
 
 public slots:
-
+    void commitAndCloseEditor();
 };
 
 #endif // TYPEATTREDITORDELEGATE_H

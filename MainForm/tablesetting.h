@@ -10,6 +10,7 @@
 #include <QAbstractTableModel>
 
 #include "typeattreditordelegate.h"
+#include "buffer.h"
 
 
 namespace Ui {
@@ -41,6 +42,8 @@ public:
 private slots:
 
     void on_PlusItem_clicked();
+
+    void on_MinusItem_clicked();
 
 private:
     Ui::TableSetting *ui;

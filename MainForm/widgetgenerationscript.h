@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QDir>
 #include <QDebug>
+#include <QVector>
 
 //-- Интерфейс плагина --//
 #include "../Sqlite/sqlite_global.h"
@@ -33,6 +34,7 @@ private:
     void controlLoadPlugin(QString);
     Postgresql_interface * pluginpotsgresql;
     Sqlite_interface * pluginsqlite;
+    QVector<QString> vec_name;
 };
 
 #endif // WIDGETGENERATIONSCRIPT_H

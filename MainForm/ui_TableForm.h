@@ -37,7 +37,7 @@ public:
     {
         if (TableForm->objectName().isEmpty())
             TableForm->setObjectName(QStringLiteral("TableForm"));
-        TableForm->resize(151, 181);
+        TableForm->resize(150, 181);
         tableViewWidget = new QTableView(TableForm);
         tableViewWidget->setObjectName(QStringLiteral("tableViewWidget"));
         tableViewWidget->setGeometry(QRect(10, 30, 131, 91));

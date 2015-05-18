@@ -12,6 +12,7 @@
 #include <QWheelEvent>
 #include <QEvent>
 #include <QPaintEvent>
+#include <QVector>
 
 #include "tableformwidget.h"
 
@@ -20,6 +21,7 @@ class ContainerWidget : public QWidget
     Q_OBJECT
 public:
     explicit ContainerWidget(QWidget *parent = 0);
+
 
 
     QWidget *base;

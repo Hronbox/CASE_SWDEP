@@ -21,14 +21,16 @@ SOURCES += main.cpp\
     tableformwidget.cpp \
     tablesetting.cpp \
     typeattreditordelegate.cpp \
-    widgetgenerationscript.cpp
+    widgetgenerationscript.cpp \
+    buffer.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
     tableformwidget.h \
     tablesetting.h \
     typeattreditordelegate.h \
-    widgetgenerationscript.h
+    widgetgenerationscript.h \
+    buffer.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

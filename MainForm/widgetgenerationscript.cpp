@@ -10,7 +10,8 @@ WidgetGenerationScript::WidgetGenerationScript(QWidget *parent) :
     ui(new Ui::WidgetGenerationScript)
 {
     ui->setupUi(this);
-    qDebug()<<"WORK 1!";
+    vec_name.reserve(100);
+    //qDebug()<<"WORK 1!";
     //loadPlugins();
 }
 
@@ -31,22 +32,24 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
         QString prefix = "lib";         // В Linux добовляется приставка lib...
     #endif
 
-    qDebug()<<"WORK 2!";
+    //qDebug()<<"WORK 2!";
     QStringList readPluginsName;
     readPluginsName << "Sqlite";
     readPluginsName << "Postgresql";
     QStringList combo;
     combo<<"Выберите драйвер";
 
-    qDebug()<<readPluginsName;
+    //qDebug()<<readPluginsName;
     for(int i = 0; i < readPluginsName.size(); i++)
     {
         QDir findPlugin(pathPlugin);
-        qDebug()<<findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement);
+        //qDebug()<<findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement);
         if(findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement))
         {
+            vec_name.push_back(readPluginsName.at(i));
+            qDebug()<<vec_name;
             QPluginLoader loader(pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement);
-
+            //qDebug()<<loader.load();
             // Исключаем ошибки
             if (loader.isLoaded())
             {
@@ -58,10 +61,9 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
             // Исключаем ошибки
             if (loader.load() == false)
             {
-                qDebug() << QString("%1 %2\n%3: %4")
+                qDebug() << QString("%1 %2")
                             .arg(QObject::tr("Can't load a plugin"))
-                            .arg(readPluginsName.at(i)).arg(QObject::tr("error"))
-                            .arg(loader.errorString());
+                            .arg(readPluginsName.at(i));
             }
             else
             {
@@ -83,7 +85,14 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
             }
 
         }
+        //тут
+        else
+        {
+            qDebug() << QString("%1 %2")
+                        .arg(QObject::tr("Can't load a plugin"))
+                        .arg(readPluginsName.at(i));
 
+        }
     }
 ui->comboBoxPlugin->addItems(combo);
 }
@@ -91,19 +100,23 @@ ui->comboBoxPlugin->addItems(combo);
 void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString &arg1)
 {
     QMessageBox msgBox;
-    QString versqlite = pluginsqlite->getVersion();
-    QString verpostgresql = pluginpotsgresql->getVersion();
 
-    if (arg1=="Postgresql")
-    {
-        msgBox.setText(verpostgresql);
-        msgBox.exec();
 
-    }
-    if (arg1=="Sqlite")
+    for(int i=0;i<vec_name.size();i++)
     {
-        msgBox.setText(versqlite);
-        msgBox.exec();
+        if (arg1=="Postgresql" && vec_name[i]=="Postgresql")
+        {
+            QString verpostgresql = pluginpotsgresql->getVersion();
+            msgBox.setText(verpostgresql);
+            msgBox.exec();
+
+        }
+        if (arg1=="Sqlite" && vec_name[i]=="Sqlite")
+        {
+            QString versqlite = pluginsqlite->getVersion();
+            msgBox.setText(versqlite);
+            msgBox.exec();
+        }
     }
     if(arg1=="Выберите драйвер")
     {

@@ -24,9 +24,7 @@ SYMLINK       =
 DEL_DIR       = rmdir
 MOVE          = mv -f
 SUBTARGETS    =  \
-		sub-MainForm \
-		sub-Sqlite \
-		sub-Postgresql
+		sub-MainForm
 
 
 sub-MainForm-qmake_all:  FORCE
@@ -54,56 +52,6 @@ sub-MainForm-install_subtargets: FORCE
 sub-MainForm-uninstall_subtargets: FORCE
 	@test -d MainForm/ || mkdir -p MainForm/
 	cd MainForm/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/MainForm/MainForm.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-Sqlite-qmake_all:  FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile
-	cd Sqlite/ && $(MAKE) -f Makefile qmake_all
-sub-Sqlite: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile
-sub-Sqlite-make_first: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-Sqlite-all: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-Sqlite-clean: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-Sqlite-distclean: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-Sqlite-install_subtargets: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-Sqlite-uninstall_subtargets: FORCE
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-Postgresql-qmake_all:  FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile
-	cd Postgresql/ && $(MAKE) -f Makefile qmake_all
-sub-Postgresql: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile
-sub-Postgresql-make_first: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-Postgresql-all: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-Postgresql-clean: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-Postgresql-distclean: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-Postgresql-install_subtargets: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-Postgresql-uninstall_subtargets: FORCE
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: CASE_SWDEP.pro C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++/qmake.conf C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/spec_pre.prf \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/qdevice.pri \
@@ -325,48 +273,30 @@ CASE_SWDEP.pro:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile CASE_SWDEP.pro
 
-qmake_all: sub-MainForm-qmake_all sub-Sqlite-qmake_all sub-Postgresql-qmake_all FORCE
+qmake_all: sub-MainForm-qmake_all FORCE
 
-make_first: sub-MainForm-make_first sub-Sqlite-make_first sub-Postgresql-make_first FORCE
-all: sub-MainForm-all sub-Sqlite-all sub-Postgresql-all FORCE
-clean: sub-MainForm-clean sub-Sqlite-clean sub-Postgresql-clean FORCE
-distclean: sub-MainForm-distclean sub-Sqlite-distclean sub-Postgresql-distclean FORCE
+make_first: sub-MainForm-make_first FORCE
+all: sub-MainForm-all FORCE
+clean: sub-MainForm-clean FORCE
+distclean: sub-MainForm-distclean FORCE
 	-$(DEL_FILE) Makefile
-install_subtargets: sub-MainForm-install_subtargets sub-Sqlite-install_subtargets sub-Postgresql-install_subtargets FORCE
-uninstall_subtargets: sub-MainForm-uninstall_subtargets sub-Sqlite-uninstall_subtargets sub-Postgresql-uninstall_subtargets FORCE
+install_subtargets: sub-MainForm-install_subtargets FORCE
+uninstall_subtargets: sub-MainForm-uninstall_subtargets FORCE
 
 sub-MainForm-debug:
 	@test -d MainForm/ || mkdir -p MainForm/
 	cd MainForm/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/MainForm/MainForm.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-Sqlite-debug:
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-Postgresql-debug:
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
-debug: sub-MainForm-debug sub-Sqlite-debug sub-Postgresql-debug
+debug: sub-MainForm-debug
 
 sub-MainForm-release:
 	@test -d MainForm/ || mkdir -p MainForm/
 	cd MainForm/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/MainForm/MainForm.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-Sqlite-release:
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-Postgresql-release:
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
-release: sub-MainForm-release sub-Sqlite-release sub-Postgresql-release
+release: sub-MainForm-release
 
 sub-MainForm-check:
 	@test -d MainForm/ || mkdir -p MainForm/
 	cd MainForm/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/MainForm/MainForm.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-Sqlite-check:
-	@test -d Sqlite/ || mkdir -p Sqlite/
-	cd Sqlite/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Sqlite/Sqlite.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-Postgresql-check:
-	@test -d Postgresql/ || mkdir -p Postgresql/
-	cd Postgresql/ && ( test -e Makefile || $(QMAKE) E:/GitHub/CASE_SWDEP/Postgresql/Postgresql.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
-check: sub-MainForm-check sub-Sqlite-check sub-Postgresql-check
+check: sub-MainForm-check
 install: install_subtargets  FORCE
 
 uninstall:  uninstall_subtargets FORCE

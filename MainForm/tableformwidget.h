@@ -22,7 +22,10 @@ public:
     explicit TableFormWidget(QWidget *parent = 0);
     ~TableFormWidget();
     void reDrow(QString nameTable);
+    void InsertStructData();
     QVector <Combobox> V;
+
+
 
 
     int mousePressPointX() const {return xpos;}
