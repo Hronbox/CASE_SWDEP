@@ -10,6 +10,8 @@
 
 #include "typeattreditordelegate.h"
 #include "tablesetting.h"
+#include "viewtable.h"
+#include "dbtable.h"
 
 namespace Ui {
 class TableForm;
@@ -26,12 +28,13 @@ public:
     QVector <Combobox> V;
 
 
-
+    QStandardItemModel *tablefromwidget() const;
 
     int mousePressPointX() const {return xpos;}
     int mousePressPointY() const {return ypos;}
 
-
+    void setTable(DBTable *table);
+    void updateWidgetFromData();
 
 signals:
     void sendData(QString str);
@@ -51,6 +54,8 @@ private:
     int ypos;
     bool _isBeingDragged;
     QStandardItemModel *model;
+
+    DBTable *table;
 };
 
 

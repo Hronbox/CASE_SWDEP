@@ -7,10 +7,11 @@
 #include <QDir>
 #include <QDebug>
 #include <QVector>
-
+//-- Классы хранения данных--//
+#include "dbtable.h"
+#include "maindata.h"
 //-- Интерфейс плагина --//
-#include "../Sqlite/sqlite_global.h"
-#include "../Postgresql/postgresql_global.h"
+#include "dbplugininterface.h"
 //-------------------------//
 
 namespace Ui {
@@ -29,12 +30,12 @@ public:
 private slots:
     void on_comboBoxPlugin_currentIndexChanged(const QString &arg1);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::WidgetGenerationScript *ui;
     void controlLoadPlugin(QString);
-    Postgresql_interface * pluginpotsgresql;
-    Sqlite_interface * pluginsqlite;
-    QVector<QString> vec_name;
+    QVector <DBPluginInterface*> plugins;
 };
 
 #endif // WIDGETGENERATIONSCRIPT_H

@@ -15,8 +15,9 @@ DEFINES += POSTGRESQL_LIBRARY
 
 SOURCES += postgresql.cpp
 
-HEADERS += postgresql.h\
-        postgresql_global.h
+HEADERS += postgresql.h
+
+INCLUDEPATH += C:/Qt/Project/Fedoseev/CASE_SWDEP/MainForm
 
 unix {
     target.path = /usr/lib

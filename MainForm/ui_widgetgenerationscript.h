@@ -19,6 +19,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
@@ -30,6 +32,8 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLineEdit *lineEditName;
+    QTextEdit *textEdit;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *WidgetGenerationScript)
     {
@@ -53,6 +57,12 @@ public:
         lineEditName = new QLineEdit(WidgetGenerationScript);
         lineEditName->setObjectName(QStringLiteral("lineEditName"));
         lineEditName->setGeometry(QRect(260, 60, 121, 20));
+        textEdit = new QTextEdit(WidgetGenerationScript);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(20, 140, 361, 101));
+        pushButton = new QPushButton(WidgetGenerationScript);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(260, 100, 111, 23));
 
         retranslateUi(WidgetGenerationScript);
         QObject::connect(buttonBox, SIGNAL(accepted()), WidgetGenerationScript, SLOT(accept()));
@@ -63,9 +73,10 @@ public:
 
     void retranslateUi(QDialog *WidgetGenerationScript)
     {
-        WidgetGenerationScript->setWindowTitle(QApplication::translate("WidgetGenerationScript", "Dialog", 0));
+        WidgetGenerationScript->setWindowTitle(QApplication::translate("WidgetGenerationScript", "\320\236\320\272\320\275\320\276 \320\263\320\265\320\275\320\265\321\200\320\260\321\206\320\270\320\270 \321\201\320\272\321\200\320\270\320\277\321\202\320\260", 0));
         label->setText(QApplication::translate("WidgetGenerationScript", "\320\224\321\200\320\260\320\271\320\262\320\265\321\200:", 0));
         label_2->setText(QApplication::translate("WidgetGenerationScript", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \320\261\320\260\320\267\321\213 \320\264\320\260\320\275\320\275\321\213\321\205:", 0));
+        pushButton->setText(QApplication::translate("WidgetGenerationScript", "\320\223\320\265\320\275\320\265\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214", 0));
     } // retranslateUi
 
 };

@@ -1,20 +1,20 @@
 #ifndef POSTGRESQL_H
 #define POSTGRESQL_H
 
-#include "postgresql_global.h"
-#include <QString>
+#include <dbplugininterface.h>
 
-class Postgresql : public Postgresql_interface
+class Postgresql : public DBPluginInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "com.devlab.Notifier.Postgresql_interface")
-    Q_INTERFACES(Postgresql_interface)
+    Q_PLUGIN_METADATA(IID "com.devlab.Notifier.DBPluginInterface")
+    Q_INTERFACES(DBPluginInterface)
 
 public:
     Postgresql();
 
-    virtual QString getVersion()    { return "1.0"; }
-    virtual QString getName()       { return "Postgresql"; }
+    QString getVersion()    { return "1.0"; }
+    QString getName()       { return "Postgresql"; }
+    QString getCreateScript(QVector<DBTable*> &tables);
 
     ~Postgresql() {}
 };

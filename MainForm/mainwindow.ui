@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Главное Меню окна</string>
   </property>
   <property name="accessibleName">
    <string comment="Студент"/>

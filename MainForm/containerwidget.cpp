@@ -1,7 +1,5 @@
 #include "containerwidget.h"
 
-
-
 ContainerWidget::ContainerWidget(QWidget *parent) :
     QWidget(parent)
 {
@@ -25,7 +23,14 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
     if(trig == true && pressedTableForm == NULL)
     {
         TableFormWidget *tableForm = new TableFormWidget(this);
+//        palette.setColor( QColor( Qt::red ), QPalette::Background );
+//        tableForm->setPalette(palette);
         tableForm->move(mouseEvent->x(),mouseEvent->y());
+
+        auto table = new DBTable;
+        tableForm->setTable(table);
+
+        MainData::instance()->getTables().push_back(table);
 
         tableForms.push_back(tableForm);
 

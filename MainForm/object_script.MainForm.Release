@@ -6,12 +6,15 @@ INPUT(
 ./release/tablesetting.o
 ./release/typeattreditordelegate.o
 ./release/widgetgenerationscript.o
-./release/buffer.o
+./release/dbtable.o
+./release/dbattribute.o
+./release/maindata.o
+./release/viewtable.o
 ./release/moc_mainwindow.o
 ./release/moc_containerwidget.o
 ./release/moc_tableformwidget.o
 ./release/moc_tablesetting.o
 ./release/moc_typeattreditordelegate.o
 ./release/moc_widgetgenerationscript.o
-./release/moc_buffer.o
+./release/moc_viewtable.o
 );

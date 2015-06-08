@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     tablesetting.cpp \
     typeattreditordelegate.cpp \
     widgetgenerationscript.cpp \
-    buffer.cpp
+    dbtable.cpp \
+    dbattribute.cpp \
+    maindata.cpp \
+    viewtable.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
@@ -30,7 +33,11 @@ HEADERS  += mainwindow.h \
     tablesetting.h \
     typeattreditordelegate.h \
     widgetgenerationscript.h \
-    buffer.h
+    dbtable.h \
+    dbattribute.h \
+    dbplugininterface.h \
+    maindata.h \
+    viewtable.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

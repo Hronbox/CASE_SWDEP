@@ -1,4 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    MainForm
+    MainForm\
+    Postgresql\
+    Sqlite

@@ -10,9 +10,6 @@ WidgetGenerationScript::WidgetGenerationScript(QWidget *parent) :
     ui(new Ui::WidgetGenerationScript)
 {
     ui->setupUi(this);
-    vec_name.reserve(100);
-    //qDebug()<<"WORK 1!";
-    //loadPlugins();
 }
 
 WidgetGenerationScript::~WidgetGenerationScript()
@@ -32,68 +29,30 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
         QString prefix = "lib";         // В Linux добовляется приставка lib...
     #endif
 
-    //qDebug()<<"WORK 2!";
-    QStringList readPluginsName;
-    readPluginsName << "Sqlite";
-    readPluginsName << "Postgresql";
+
     QStringList combo;
     combo<<"Выберите драйвер";
 
-    //qDebug()<<readPluginsName;
-    for(int i = 0; i < readPluginsName.size(); i++)
-    {
         QDir findPlugin(pathPlugin);
         //qDebug()<<findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement);
-        if(findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement))
-        {
-            vec_name.push_back(readPluginsName.at(i));
-            qDebug()<<vec_name;
-            QPluginLoader loader(pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement);
-            //qDebug()<<loader.load();
-            // Исключаем ошибки
-            if (loader.isLoaded())
+        QStringList filesList = findPlugin.entryList();
+        for(int i = 2;i < filesList.size(); i++)
+        {               
+            QPluginLoader loader(pathPlugin + "/" + filesList[i]);
+            loader.load();
+            if(loader.isLoaded() == false)
             {
-                loader.unload();
-                QPluginLoader loader(pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement);
-
+                qDebug() << QString("Can't load a plugin");
+                continue;
             }
-
-            // Исключаем ошибки
-            if (loader.load() == false)
+            QObject * obj = loader.instance();
+            if(DBPluginInterface* plugin = qobject_cast<DBPluginInterface *>(obj))
             {
-                qDebug() << QString("%1 %2")
-                            .arg(QObject::tr("Can't load a plugin"))
-                            .arg(readPluginsName.at(i));
+                combo<<plugin->getName();
+                plugins.push_back(plugin);
             }
-            else
-            {
-                QObject * obj = loader.instance();
-                if(readPluginsName.at(i)=="Postgresql")
-                {
-                    if(pluginpotsgresql = qobject_cast<Postgresql_interface *>(obj))
-                    {
-                       combo<<pluginpotsgresql->getName();
-                    }
-                }
-                if(readPluginsName.at(i)=="Sqlite")
-                {
-                    if(pluginsqlite = qobject_cast<Sqlite_interface *>(obj))
-                    {
-                        combo<<pluginsqlite->getName();
-                    }
-                }
-            }
-
         }
-        //тут
-        else
-        {
-            qDebug() << QString("%1 %2")
-                        .arg(QObject::tr("Can't load a plugin"))
-                        .arg(readPluginsName.at(i));
 
-        }
-    }
 ui->comboBoxPlugin->addItems(combo);
 }
 
@@ -102,19 +61,11 @@ void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString
     QMessageBox msgBox;
 
 
-    for(int i=0;i<vec_name.size();i++)
+    for(int i=0;i<plugins.size();i++)
     {
-        if (arg1=="Postgresql" && vec_name[i]=="Postgresql")
+        if (plugins[i]->getName()==arg1)
         {
-            QString verpostgresql = pluginpotsgresql->getVersion();
-            msgBox.setText(verpostgresql);
-            msgBox.exec();
-
-        }
-        if (arg1=="Sqlite" && vec_name[i]=="Sqlite")
-        {
-            QString versqlite = pluginsqlite->getVersion();
-            msgBox.setText(versqlite);
+            msgBox.setText(plugins[i]->getVersion());
             msgBox.exec();
         }
     }
@@ -122,4 +73,19 @@ void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString
     {
 
     }
+}
+
+void WidgetGenerationScript::on_pushButton_clicked()
+{
+    MainData data;
+    QVector<DBTable*> tables = MainData::instance()->getTables();
+    QString resscript;
+    for(int i=0;i<plugins.size();i++)
+    {
+        if (plugins[i]->getName()==ui->comboBoxPlugin->currentText())
+        {
+            resscript = plugins[i]->getCreateScript(tables);
+        }
+    }
+    ui->textEdit->setText(resscript);
 }

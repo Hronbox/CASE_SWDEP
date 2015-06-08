@@ -37,19 +37,21 @@ public:
     {
         if (TableForm->objectName().isEmpty())
             TableForm->setObjectName(QStringLiteral("TableForm"));
-        TableForm->resize(150, 181);
+        TableForm->setWindowModality(Qt::ApplicationModal);
+        TableForm->resize(250, 190);
+        TableForm->setAutoFillBackground(true);
         tableViewWidget = new QTableView(TableForm);
         tableViewWidget->setObjectName(QStringLiteral("tableViewWidget"));
-        tableViewWidget->setGeometry(QRect(10, 30, 131, 91));
+        tableViewWidget->setGeometry(QRect(10, 30, 221, 91));
         label = new QLabel(TableForm);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 10, 46, 13));
+        label->setGeometry(QRect(10, 10, 111, 16));
         pushButton = new QPushButton(TableForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(10, 130, 75, 23));
         line = new QFrame(TableForm);
         line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(0, 178, 150, 5));
+        line->setGeometry(QRect(2, 178, 240, 5));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
         line_2 = new QFrame(TableForm);
@@ -59,12 +61,12 @@ public:
         line_2->setFrameShadow(QFrame::Sunken);
         line_3 = new QFrame(TableForm);
         line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setGeometry(QRect(148, 0, 5, 180));
+        line_3->setGeometry(QRect(240, 0, 5, 180));
         line_3->setFrameShape(QFrame::VLine);
         line_3->setFrameShadow(QFrame::Sunken);
         line_4 = new QFrame(TableForm);
         line_4->setObjectName(QStringLiteral("line_4"));
-        line_4->setGeometry(QRect(0, 0, 150, 5));
+        line_4->setGeometry(QRect(2, 0, 240, 5));
         line_4->setFrameShape(QFrame::HLine);
         line_4->setFrameShadow(QFrame::Sunken);
 
@@ -75,8 +77,8 @@ public:
 
     void retranslateUi(QWidget *TableForm)
     {
-        TableForm->setWindowTitle(QApplication::translate("TableForm", "Form", 0));
-        label->setText(QApplication::translate("TableForm", "TextLabel", 0));
+        TableForm->setWindowTitle(QApplication::translate("TableForm", "\320\236\320\272\320\275\320\276 \320\275\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
+        label->setText(QApplication::translate("TableForm", "<html><head/><body><p>\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213</p></body></html>", 0));
         pushButton->setText(QApplication::translate("TableForm", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0));
     } // retranslateUi
 

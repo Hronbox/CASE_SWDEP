@@ -15,8 +15,9 @@ DEFINES += SQLITE_LIBRARY
 
 SOURCES += sqlite.cpp
 
-HEADERS += sqlite.h\
-        sqlite_global.h
+HEADERS += sqlite.h
+
+INCLUDEPATH += C:/Qt/Project/Fedoseev/CASE_SWDEP/MainForm
 
 unix {
     target.path = /usr/lib

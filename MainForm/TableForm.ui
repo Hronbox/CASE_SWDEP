@@ -2,23 +2,29 @@
 <ui version="4.0">
  <class>TableForm</class>
  <widget class="QWidget" name="TableForm">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>150</width>
-    <height>181</height>
+    <width>250</width>
+    <height>190</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Окно настройки таблицы</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <widget class="QTableView" name="tableViewWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>30</y>
-     <width>131</width>
+     <width>221</width>
      <height>91</height>
     </rect>
    </property>
@@ -28,12 +34,12 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>46</width>
-     <height>13</height>
+     <width>111</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Название таблицы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -52,9 +58,9 @@
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>2</x>
      <y>178</y>
-     <width>150</width>
+     <width>240</width>
      <height>5</height>
     </rect>
    </property>
@@ -78,7 +84,7 @@
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>148</x>
+     <x>240</x>
      <y>0</y>
      <width>5</width>
      <height>180</height>
@@ -91,9 +97,9 @@
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>2</x>
      <y>0</y>
-     <width>150</width>
+     <width>240</width>
      <height>5</height>
     </rect>
    </property>

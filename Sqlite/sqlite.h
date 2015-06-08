@@ -1,20 +1,21 @@
 #ifndef SQLITE_H
 #define SQLITE_H
 
-#include "sqlite_global.h"
+#include <dbplugininterface.h>
 #include <QString>
 
-class Sqlite : public Sqlite_interface
+class Sqlite : public DBPluginInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "com.devlab.Notifier.Sqlite_interface")
-    Q_INTERFACES(Sqlite_interface)
+    Q_PLUGIN_METADATA(IID "com.devlab.Notifier.DBPluginInterface")
+    Q_INTERFACES(DBPluginInterface)
 
 public:
     Sqlite();
 
-    virtual QString getVersion()    { return "1.0"; }
-    virtual QString getName()       { return "Sqlite"; }
+    QString getVersion()    { return "1.0"; }
+    QString getName()       { return "Sqlite"; }
+    QString getCreateScript(QVector<DBTable*> &tables);
 
     ~Sqlite() {}
 };

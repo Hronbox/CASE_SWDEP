@@ -7,11 +7,15 @@
 #include <QVector>
 #include <QStringList>
 #include <QStandardItem>
+#include <QStandardItemModel>
 #include <QAbstractTableModel>
 
 #include "typeattreditordelegate.h"
-#include "buffer.h"
+#include "tableformwidget.h"
+#include "viewtable.h"
 
+
+#include "dbtable.h"
 
 namespace Ui {
 class TableSetting;
@@ -23,21 +27,15 @@ class TableSetting : public QDialog
 public:
     explicit TableSetting(QWidget *parent = 0);
     ~TableSetting();
-    void SetModelinSetting(QStandardItemModel *modelset);
-
-
-
 
     QStandardItem *item;
 
     QString tableName() const;
-    QStandardItemModel *table() const;
-
-
-
-
     QVector <Combobox> V;
 
+    void setTable(DBTable &table);
+
+    DBTable getTable();
 
 private slots:
 
@@ -47,8 +45,9 @@ private slots:
 
 private:
     Ui::TableSetting *ui;
-    QStandardItemModel *model1;
+    QStandardItemModel *model;
     int count;
+    void delegate();
 };
 
 #endif // TABLESETTING_H

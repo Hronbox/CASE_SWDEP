@@ -13,8 +13,11 @@
 #include <QEvent>
 #include <QPaintEvent>
 #include <QVector>
+#include <QColor>
+#include <QPalette>
 
 #include "tableformwidget.h"
+#include "maindata.h"
 
 class ContainerWidget : public QWidget
 {
