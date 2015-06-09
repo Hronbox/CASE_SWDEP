@@ -22,4 +22,5 @@ void DBTable::addName(QString &name)
 void DBTable::addConnection(DBTable &table)
 {
     foreignTables.push_back(table.getIdTable());
+    foreignTables.erase( std::unique(foreignTables.begin(), foreignTables.end() ), foreignTables.end() );
 }

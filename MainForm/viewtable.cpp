@@ -11,7 +11,6 @@ QStandardItemModel *ViewTable::createView()
     horizontalHeader.append("Attributs");
     horizontalHeader.append("Type");
     horizontalHeader.append("PK");
-    horizontalHeader.append("FK");
     horizontalHeader.append("NN");
     horizontalHeader.append("U");
 

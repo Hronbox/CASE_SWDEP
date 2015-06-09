@@ -140,7 +140,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\234\320\265\320\275\321\216 \320\276\320\272\320\275\320\260", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\276\320\272\320\275\320\276 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\213", 0));
 #ifndef QT_NO_ACCESSIBILITY
         MainWindow->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY

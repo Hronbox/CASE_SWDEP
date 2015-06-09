@@ -115,7 +115,6 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
         QStandardItem *itemName = new QStandardItem(attribute.name);
         QStandardItem *itemType = new QStandardItem(attribute.type);
         QStandardItem *itemPK = new QStandardItem(attribute.PK);
-        QStandardItem *itemFK = new QStandardItem(attribute.FK);
         QStandardItem *itemNN = new QStandardItem(attribute.NN);
         QStandardItem *itemU = new QStandardItem(attribute.UNIQ);
 
@@ -129,42 +128,21 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
         {
             model->setData(model->index(i,2,QModelIndex()),0,Qt::CheckStateRole );
         }
-        if(itemFK->text().toInt()==1)
-        {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
-            itemFK->setCheckState(checkState);
-            //model->setItem(i,3,itemFK);
-        }
-        else
-        {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
-            itemFK->setCheckState(checkState);
-            //model->setItem(i,3,itemFK);
-        }
         if(itemNN->text().toInt()==1)
         {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
-            itemNN->setCheckState(checkState);
-           // model->setItem(i,4,itemNN);
-
+            model->setData(model->index(i,3,QModelIndex()),2,Qt::CheckStateRole);
         }
         else
         {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
-            itemNN->setCheckState(checkState);
-            //model->setItem(i,4,itemNN);
+            model->setData(model->index(i,3,QModelIndex()),0,Qt::CheckStateRole );
         }
         if(itemU->text().toInt()==1)
         {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
-            itemPK->setCheckState(checkState);
-           // model->setItem(i,5,itemU);
+            model->setData(model->index(i,4,QModelIndex()),2,Qt::CheckStateRole);
         }
         else
         {
-            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
-            itemPK->setCheckState(checkState);
-           // model->setItem(i,5,itemU);
+            model->setData(model->index(i,4,QModelIndex()),0,Qt::CheckStateRole );
         }
     }
 
@@ -184,12 +162,6 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
     {
         DBTable *table = MainData::getTableById(foreignTables[i]);
 
-        if(table==NULL)
-        {
-            qDebug() << "Тут ошибка короч";
-            exit(2);
-        }
-
         modelConection->setItem(i,0,new QStandardItem(table->getName()));
     }
 
@@ -197,8 +169,8 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
 
 DBTable TableSetting::getTable()//доделать атрибуты
 {
-    QModelIndex myInName,myInType,myInPK,myInFK,myInNN,myInU;
-    QVariant myDatName,myDatType,myDatPK,myDatFK,myDatNN,myDatU;
+    QModelIndex myInName,myInType,myInPK,myInNN,myInU;
+    QVariant myDatName,myDatType,myDatPK,myDatNN,myDatU;
 
     DBTable table;
 
@@ -209,14 +181,12 @@ DBTable TableSetting::getTable()//доделать атрибуты
         myInName=model->index(i,0,QModelIndex());
         myInType=model->index(i,1,QModelIndex());
         myInPK=model->index(i,2,QModelIndex());
-        myInFK=model->index(i,3,QModelIndex());
-        myInNN=model->index(i,4,QModelIndex());
-        myInU=model->index(i,5,QModelIndex());
+        myInNN=model->index(i,3,QModelIndex());
+        myInU=model->index(i,4,QModelIndex());
 
         myDatName=model->data(myInName,Qt::DisplayRole);
         myDatType=model->data(myInType,Qt::DisplayRole);
         myDatPK=model->data(myInPK,Qt::CheckStateRole);
-        myDatFK=model->data(myInFK,Qt::CheckStateRole);
         myDatNN=model->data(myInNN,Qt::CheckStateRole);
         myDatU=model->data(myInU,Qt::CheckStateRole);
 
@@ -224,15 +194,7 @@ DBTable TableSetting::getTable()//доделать атрибуты
 
         attribute.name = myDatName.toString();
         attribute.type = myDatType.toString();
-        if(myDatPK.toInt()==2)
-            attribute.PK = "1";
-        else
-            attribute.PK = "0";
 
-        if(myDatFK.toInt()==2)
-            attribute.FK = "1";
-        else
-            attribute.FK = "0";
 
         if(myDatNN.toInt()==2)
             attribute.NN = "1";
@@ -243,6 +205,15 @@ DBTable TableSetting::getTable()//доделать атрибуты
             attribute.UNIQ = "1";
         else
             attribute.UNIQ = "0";
+
+        if(myDatPK.toInt()==2)
+        {
+            attribute.PK = "1";
+            attribute.NN = "1";
+            attribute.UNIQ = "1";
+        }
+        else
+            attribute.PK = "0";
 
         table.addAttribute(attribute);
 
@@ -256,12 +227,6 @@ DBTable TableSetting::getTable()//доделать атрибуты
         auto dataTable=modelConection->data(indexTable,Qt::DisplayRole);
 
         DBTable *ptable = MainData::getTableByName(dataTable.toString());
-
-        if(ptable==nullptr)
-        {
-            qDebug() << "Короч в ведьмака нипаиграть";
-            exit(2);
-        }
 
         table.addConnection(*ptable);
     }

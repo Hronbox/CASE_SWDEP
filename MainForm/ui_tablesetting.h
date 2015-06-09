@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
@@ -36,9 +35,6 @@ public:
     QPushButton *PlusItem;
     QPushButton *MinusItem;
     QWidget *tab_2;
-    QComboBox *conection_combo;
-    QPushButton *PlusConection;
-    QPushButton *MinusConection;
     QTableView *tableViewConection;
     QWidget *tab_3;
     QLineEdit *lineEdit;
@@ -89,18 +85,9 @@ public:
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
-        conection_combo = new QComboBox(tab_2);
-        conection_combo->setObjectName(QStringLiteral("conection_combo"));
-        conection_combo->setGeometry(QRect(30, 30, 69, 22));
-        PlusConection = new QPushButton(tab_2);
-        PlusConection->setObjectName(QStringLiteral("PlusConection"));
-        PlusConection->setGeometry(QRect(230, 30, 75, 23));
-        MinusConection = new QPushButton(tab_2);
-        MinusConection->setObjectName(QStringLiteral("MinusConection"));
-        MinusConection->setGeometry(QRect(310, 30, 75, 23));
         tableViewConection = new QTableView(tab_2);
         tableViewConection->setObjectName(QStringLiteral("tableViewConection"));
-        tableViewConection->setGeometry(QRect(30, 60, 351, 161));
+        tableViewConection->setGeometry(QRect(30, 20, 351, 201));
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
@@ -120,7 +107,7 @@ public:
         QObject::connect(buttonBox, SIGNAL(rejected()), TableSetting, SLOT(reject()));
         QObject::connect(buttonBox, SIGNAL(accepted()), TableSetting, SLOT(accept()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(TableSetting);
@@ -132,10 +119,8 @@ public:
         PlusItem->setText(QString());
         MinusItem->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("TableSetting", "\320\220\321\202\321\200\320\270\320\261\321\203\321\202\321\213", 0));
-        PlusConection->setText(QApplication::translate("TableSetting", "PushButton", 0));
-        MinusConection->setText(QApplication::translate("TableSetting", "PushButton", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("TableSetting", "\320\241\320\262\321\217\320\267\320\270", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("TableSetting", "\320\241\320\273\320\276\320\266\320\275\321\213\320\265 \320\272\320\273\321\216\321\207\320\270", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("TableSetting", "\320\243\320\275\320\270\320\272\320\260\320\273\321\214\320\275\321\213\320\265 \320\277\320\276\320\273\321\217", 0));
         label->setText(QApplication::translate("TableSetting", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
     } // retranslateUi
 

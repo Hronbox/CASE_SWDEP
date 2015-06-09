@@ -42,8 +42,38 @@ void TableFormWidget::updateWidgetFromData()//доделать атрибуты
     {
         DBAttribute &attribute = attributes[i];
 
-        QStandardItem *item = new QStandardItem(attribute.name);
-        model->setItem(i,0,item);
+        QStandardItem *itemName = new QStandardItem(attribute.name);
+        QStandardItem *itemType = new QStandardItem(attribute.type);
+        QStandardItem *itemPK = new QStandardItem(attribute.PK);
+        QStandardItem *itemNN = new QStandardItem(attribute.NN);
+        QStandardItem *itemU = new QStandardItem(attribute.UNIQ);
+
+        model->setItem(i,0,itemName);
+        model->setItem(i,1,itemType);
+        if(itemPK->text().toInt()==1)
+        {
+            model->setData(model->index(i,2,QModelIndex()),2,Qt::CheckStateRole);
+        }
+        else
+        {
+            model->setData(model->index(i,2,QModelIndex()),0,Qt::CheckStateRole );
+        }
+        if(itemNN->text().toInt()==1)
+        {
+            model->setData(model->index(i,3,QModelIndex()),2,Qt::CheckStateRole);
+        }
+        else
+        {
+            model->setData(model->index(i,3,QModelIndex()),0,Qt::CheckStateRole );
+        }
+        if(itemU->text().toInt()==1)
+        {
+            model->setData(model->index(i,4,QModelIndex()),2,Qt::CheckStateRole);
+        }
+        else
+        {
+            model->setData(model->index(i,4,QModelIndex()),0,Qt::CheckStateRole );
+        }
     }
 }
 

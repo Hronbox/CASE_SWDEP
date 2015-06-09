@@ -25,16 +25,40 @@ QString Postgresql::getCreateScript(QVector<DBTable *> &tables)
         QString script="";
         for(int i=0;i<tables.size();i++)
         {
+            if (tables[i]->getAttributes().size()==0)
+            {continue;}
             script = script+"CREATE TABLE " + tables[i]->getName()+" (";
             for(int j=0;j<tables[i]->getAttributes().size();j++)
             {
                 if(j==tables[i]->getAttributes().size()-1)
                 {
                     script =script+tables[i]->getAttributes()[j].name + " " + tables[i]->getAttributes()[j].type;
+                    if(tables[i]->getAttributes()[j].NN == "1")
+                    {
+                        if(tables[i]->getAttributes()[j].PK == "0")
+                            script =script + " NOT NULL";
+                    }
+                    if(tables[i]->getAttributes()[j].UNIQ == "1")
+                    {
+                        if(tables[i]->getAttributes()[j].PK == "0")
+                            script =script + " UNIQUE";
+                    }
+
                 }
                 else
                 {
-                    script=script+tables[i]->getAttributes()[j].name + " " + tables[i]->getAttributes()[j].type + ",";
+                    script=script+tables[i]->getAttributes()[j].name + " " + tables[i]->getAttributes()[j].type;
+                    if(tables[i]->getAttributes()[j].NN == "1")
+                    {
+                        if(tables[i]->getAttributes()[j].PK == "0")
+                            script =script + " NOT NULL";
+                    }
+                    if(tables[i]->getAttributes()[j].UNIQ == "1")
+                    {
+                        if(tables[i]->getAttributes()[j].PK == "0")
+                            script =script + " UNIQUE";
+                    }
+                    script =script+ ",";
                 }  
             }
 
@@ -58,8 +82,18 @@ QString Postgresql::getCreateScript(QVector<DBTable *> &tables)
                 }
 
                 script += ',' + nameAttr;
-                script=script+" REFERENCES "+table->getName()+" ON DELETE CASCADE ON UPDATE CASCADE ";
+                script=script+" REFERENCES "+table->getName()+" ON DELETE CASCADE ON UPDATE CASCADE";
             }
+            script=script+",PRIMARY KEY(";
+            for(int attr=0;attr<tables[i]->getAttributes().size();attr++)
+            {
+                if(tables[i]->getAttributes()[attr].PK=="1")
+                {
+                    script=script+tables[i]->getAttributes()[attr].name+',';
+                }
+            }
+            script.resize(script.size()-1);
+            script += ")";
             script += ");\n";
         }
 
