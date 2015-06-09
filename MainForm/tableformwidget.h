@@ -34,6 +34,7 @@ public:
     int mousePressPointY() const {return ypos;}
 
     void setTable(DBTable *table);
+	DBTable *&getTable();
     void updateWidgetFromData();
 
 signals:

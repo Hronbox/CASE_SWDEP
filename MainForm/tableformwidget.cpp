@@ -49,6 +49,11 @@ void TableFormWidget::updateWidgetFromData()//доделать атрибуты
     }
 }
 
+DBTable* &TableFormWidget::getTable()
+{
+    return table;
+}
+
 
 void TableFormWidget::on_pushButton_clicked()
 {

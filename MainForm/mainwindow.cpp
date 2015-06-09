@@ -30,7 +30,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::setgeometryscroll()
 {
-  // QSize areaSize = ui->scrollArea->viewport()->size();
 
     QSize containersize = container->size();
     QSize widgetSize = tableForm->size();
@@ -53,49 +52,40 @@ void MainWindow::setgeometryscroll()
     }
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_tableRadio_clicked()
 {
-
-}
-
-void MainWindow::on_pushButton_3_pressed()
-{
-    container->changetrigtrue();
-}
-
-void MainWindow::on_pushButton_3_released()
-{
-   container->changetrigfalse();
-}
-
-void MainWindow::on_radioButton_clicked()
-{
-    container->changetrigtrue();
+    container->trigTable = true;
     //фолс для связей
 }
 
 
-void MainWindow::on_radioButton_2_clicked()
+void MainWindow::on_one_to_one_clicked()
 {
-    container->changetrigfalse();
+    container->trigTable = false;
     //тру для связей
 }
 
-void MainWindow::on_radioButton_3_clicked()
+void MainWindow::on_one_to_N_clicked()
 {
-    container->changetrigfalse();
+    container->trigTable = false;
     //фолс для связей
 }
 
-void MainWindow::on_action_7_triggered()
+void MainWindow::on_Editing_clicked()
 {
-    close();
+    container->trigTable = false;
+    //фолс для связей
 }
 
-
-void MainWindow::on_action_5_triggered()
+void MainWindow::on_close_triggered()
 {
-    WidgetGenerationScript *ScriptForm = new WidgetGenerationScript();
+     close();
+}
+
+void MainWindow::on_createSript_triggered()
+{
+    ScriptForm = new WidgetGenerationScript();
     ScriptForm->loadPlugins();
     ScriptForm->show();
+
 }

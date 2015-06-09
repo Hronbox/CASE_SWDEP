@@ -3,24 +3,19 @@
 ContainerWidget::ContainerWidget(QWidget *parent) :
     QWidget(parent)
 {
-    trig=false;
+    trigTable=false;
     pressedTableForm = NULL;
 }
 
-void ContainerWidget::changetrigtrue()
-{
-    trig = true;
-}
 
-void ContainerWidget::changetrigfalse()
-{
-    trig = false;
-}
 void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
 {
     pressedTableForm =  dynamic_cast<TableFormWidget*>(childAt(mouseEvent->x(),mouseEvent->y()));
 
-    if(trig == true && pressedTableForm == NULL)
+
+    qDebug()<<childAt(mouseEvent->x(),mouseEvent->y());
+
+    if(trigTable == true && pressedTableForm == NULL)
     {
         TableFormWidget *tableForm = new TableFormWidget(this);
 //        palette.setColor( QColor( Qt::red ), QPalette::Background );
@@ -30,6 +25,7 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
         auto table = new DBTable;
         tableForm->setTable(table);
 
+
         MainData::instance()->getTables().push_back(table);
 
         tableForms.push_back(tableForm);
@@ -38,15 +34,29 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
 
         emit sig();
     }
+
+
+    if(trigTable == false && pressedTableForm != NULL)
+    {
+        QString name =pressedTableForm->getTable()->getName();
+        qDebug()<<name;
+    }
+
+
+
 }
 
 void ContainerWidget::mouseMoveEvent(QMouseEvent *mouseEvent)
 {
     if(pressedTableForm == NULL)
         return;
+    if(trigTable==true)
+    {
+        pressedTableForm->move(mouseEvent->x(),mouseEvent->y());
+        pressedTableForm->show();
+    }
 
-    pressedTableForm->move(mouseEvent->x(),mouseEvent->y());
-    pressedTableForm->show();
+
 }
 
 void ContainerWidget::mouseReleaseEvent(QMouseEvent *mouseEvent)

@@ -17,23 +17,7 @@
    <string comment="Студент"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Taблица</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="tableRadio">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -50,7 +34,7 @@
       <normaloff>ico/table_add.ico</normaloff>ico/table_add.ico</iconset>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="one_to_one">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -63,7 +47,7 @@
      <string>Связь 1:1</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_3">
+   <widget class="QRadioButton" name="Editing">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -76,7 +60,7 @@
      <string>Редактирование</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_4">
+   <widget class="QRadioButton" name="one_to_N">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -139,13 +123,13 @@
     <addaction name="action_2"/>
     <addaction name="action_3"/>
     <addaction name="action_4"/>
-    <addaction name="action_7"/>
+    <addaction name="close"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>Действия</string>
     </property>
-    <addaction name="action_5"/>
+    <addaction name="createSript"/>
     <addaction name="action_6"/>
    </widget>
    <widget class="QMenu" name="menu_3">
@@ -188,7 +172,7 @@
     <string>Печать</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="createSript">
    <property name="text">
     <string>Создание скрипта</string>
    </property>
@@ -198,7 +182,7 @@
     <string>Создание  базы данных</string>
    </property>
   </action>
-  <action name="action_7">
+  <action name="close">
    <property name="text">
     <string>Выход</string>
    </property>

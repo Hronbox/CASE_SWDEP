@@ -30,24 +30,19 @@ public:
 
 private slots:
 
-    void on_pushButton_3_clicked();
+    void on_tableRadio_clicked();
 
-    void on_pushButton_3_pressed();
-
-    void on_pushButton_3_released();
-
-    void on_radioButton_clicked();
-
-    void on_radioButton_2_clicked();
-
-    void on_radioButton_3_clicked();
-
-    void on_action_7_triggered();
+    void on_one_to_one_clicked();
 
     void setgeometryscroll();
 
+    void on_one_to_N_clicked();
 
-    void on_action_5_triggered();
+    void on_Editing_clicked();
+
+    void on_close_triggered();
+
+    void on_createSript_triggered();
 
 private:
     Ui::MainWindow *ui;

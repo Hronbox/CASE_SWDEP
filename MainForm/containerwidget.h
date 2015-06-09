@@ -28,9 +28,10 @@ public:
 
 
     QWidget *base;
-    bool trig;
-    void changetrigtrue();
-    void changetrigfalse();
+    bool trigTable;
+    bool trigConection1To1;
+    bool trigConection1ToM;
+    bool trigEdit;
 protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
     virtual void mouseMoveEvent ( QMouseEvent *mouseEvent );

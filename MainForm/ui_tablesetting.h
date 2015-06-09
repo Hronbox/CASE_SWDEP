@@ -13,13 +13,16 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -27,20 +30,28 @@ class Ui_TableSetting
 {
 public:
     QDialogButtonBox *buttonBox;
+    QTabWidget *tabWidget;
+    QWidget *tab;
     QTableView *tableViewSitting;
-    QLabel *label;
-    QLineEdit *lineEdit;
     QPushButton *PlusItem;
     QPushButton *MinusItem;
+    QWidget *tab_2;
+    QComboBox *conection_combo;
+    QPushButton *PlusConection;
+    QPushButton *MinusConection;
+    QTableView *tableViewConection;
+    QWidget *tab_3;
+    QLineEdit *lineEdit;
+    QLabel *label;
 
     void setupUi(QDialog *TableSetting)
     {
         if (TableSetting->objectName().isEmpty())
             TableSetting->setObjectName(QStringLiteral("TableSetting"));
-        TableSetting->resize(397, 346);
+        TableSetting->resize(442, 391);
         buttonBox = new QDialogButtonBox(TableSetting);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(220, 310, 156, 23));
+        buttonBox->setGeometry(QRect(270, 350, 156, 23));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -48,48 +59,69 @@ public:
         buttonBox->setSizePolicy(sizePolicy);
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        tableViewSitting = new QTableView(TableSetting);
+        tabWidget = new QTabWidget(TableSetting);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setGeometry(QRect(10, 50, 421, 281));
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        tableViewSitting = new QTableView(tab);
         tableViewSitting->setObjectName(QStringLiteral("tableViewSitting"));
-        tableViewSitting->setGeometry(QRect(32, 66, 351, 192));
+        tableViewSitting->setGeometry(QRect(16, 5, 351, 192));
         sizePolicy.setHeightForWidth(tableViewSitting->sizePolicy().hasHeightForWidth());
         tableViewSitting->setSizePolicy(sizePolicy);
-        label = new QLabel(TableSetting);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(32, 40, 95, 16));
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
-        lineEdit = new QLineEdit(TableSetting);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(154, 37, 133, 20));
-        sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy);
-        PlusItem = new QPushButton(TableSetting);
+        PlusItem = new QPushButton(tab);
         PlusItem->setObjectName(QStringLiteral("PlusItem"));
         PlusItem->setEnabled(true);
-        PlusItem->setGeometry(QRect(320, 275, 28, 24));
+        PlusItem->setGeometry(QRect(316, 210, 28, 24));
         sizePolicy.setHeightForWidth(PlusItem->sizePolicy().hasHeightForWidth());
         PlusItem->setSizePolicy(sizePolicy);
         QIcon icon;
         icon.addFile(QStringLiteral("ico/add.ico"), QSize(), QIcon::Normal, QIcon::Off);
         PlusItem->setIcon(icon);
-        MinusItem = new QPushButton(TableSetting);
+        MinusItem = new QPushButton(tab);
         MinusItem->setObjectName(QStringLiteral("MinusItem"));
-        MinusItem->setGeometry(QRect(354, 275, 28, 24));
+        MinusItem->setGeometry(QRect(350, 210, 28, 24));
         sizePolicy.setHeightForWidth(MinusItem->sizePolicy().hasHeightForWidth());
         MinusItem->setSizePolicy(sizePolicy);
         QIcon icon1;
         icon1.addFile(QStringLiteral("ico/subtract.ico"), QSize(), QIcon::Normal, QIcon::Off);
         MinusItem->setIcon(icon1);
-        PlusItem->raise();
-        MinusItem->raise();
-        buttonBox->raise();
-        tableViewSitting->raise();
-        lineEdit->raise();
-        label->raise();
+        tabWidget->addTab(tab, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        conection_combo = new QComboBox(tab_2);
+        conection_combo->setObjectName(QStringLiteral("conection_combo"));
+        conection_combo->setGeometry(QRect(30, 30, 69, 22));
+        PlusConection = new QPushButton(tab_2);
+        PlusConection->setObjectName(QStringLiteral("PlusConection"));
+        PlusConection->setGeometry(QRect(230, 30, 75, 23));
+        MinusConection = new QPushButton(tab_2);
+        MinusConection->setObjectName(QStringLiteral("MinusConection"));
+        MinusConection->setGeometry(QRect(310, 30, 75, 23));
+        tableViewConection = new QTableView(tab_2);
+        tableViewConection->setObjectName(QStringLiteral("tableViewConection"));
+        tableViewConection->setGeometry(QRect(30, 60, 351, 161));
+        tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        tabWidget->addTab(tab_3, QString());
+        lineEdit = new QLineEdit(TableSetting);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(140, 20, 133, 20));
+        sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy);
+        label = new QLabel(TableSetting);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(18, 23, 95, 16));
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
 
         retranslateUi(TableSetting);
         QObject::connect(buttonBox, SIGNAL(rejected()), TableSetting, SLOT(reject()));
         QObject::connect(buttonBox, SIGNAL(accepted()), TableSetting, SLOT(accept()));
+
+        tabWidget->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(TableSetting);
     } // setupUi
@@ -97,9 +129,14 @@ public:
     void retranslateUi(QDialog *TableSetting)
     {
         TableSetting->setWindowTitle(QApplication::translate("TableSetting", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
-        label->setText(QApplication::translate("TableSetting", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
         PlusItem->setText(QString());
         MinusItem->setText(QString());
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("TableSetting", "\320\220\321\202\321\200\320\270\320\261\321\203\321\202\321\213", 0));
+        PlusConection->setText(QApplication::translate("TableSetting", "PushButton", 0));
+        MinusConection->setText(QApplication::translate("TableSetting", "PushButton", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("TableSetting", "\320\241\320\262\321\217\320\267\320\270", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("TableSetting", "\320\241\320\273\320\276\320\266\320\275\321\213\320\265 \320\272\320\273\321\216\321\207\320\270", 0));
+        label->setText(QApplication::translate("TableSetting", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
     } // retranslateUi
 
 };
