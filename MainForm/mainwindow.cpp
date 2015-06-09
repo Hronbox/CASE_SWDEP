@@ -55,26 +55,34 @@ void MainWindow::setgeometryscroll()
 void MainWindow::on_tableRadio_clicked()
 {
     container->trigTable = true;
-    //фолс для связей
+    container->trigConection1To1 = false;
+    container->trigConection1ToM = false;
+    container->trigEdit = false;
 }
 
 
 void MainWindow::on_one_to_one_clicked()
 {
     container->trigTable = false;
-    //тру для связей
+    container->trigConection1To1 = true;
+    container->trigConection1ToM = false;
+    container->trigEdit = false;
 }
 
 void MainWindow::on_one_to_N_clicked()
 {
     container->trigTable = false;
-    //фолс для связей
+    container->trigConection1To1 = false;
+    container->trigConection1ToM = true;
+    container->trigEdit = false;
 }
 
 void MainWindow::on_Editing_clicked()
 {
     container->trigTable = false;
-    //фолс для связей
+    container->trigConection1To1 = false;
+    container->trigConection1ToM = false;
+    container->trigEdit = true;
 }
 
 void MainWindow::on_close_triggered()

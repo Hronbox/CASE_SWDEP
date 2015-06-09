@@ -17,5 +17,35 @@ MainData *MainData::instance()
 
 QVector<DBTable *> &MainData::getTables()
 {
-    return tables;
+    return MainData::instance()->tables;
+}
+
+DBTable *MainData::getTableById(IdTable idTable)
+{
+    QVector<DBTable*> &tables = MainData::getTables();
+
+    for(int i=0;i<tables.size();i++)
+    {
+        if(tables[i]->getIdTable() == idTable)
+        {
+            return tables[i];
+        }
+    }
+
+    return NULL;
+}
+
+DBTable *MainData::getTableByName(const QString &name)
+{
+    QVector<DBTable*> &tables = MainData::getTables();
+
+    for(int i=0;i<tables.size();i++)
+    {
+        if(tables[i]->getName() == name)
+        {
+            return tables[i];
+        }
+    }
+
+    return NULL;
 }

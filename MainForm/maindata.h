@@ -10,7 +10,9 @@ public:
     MainData();
 
     static MainData *instance();
-    QVector<DBTable*> &getTables();
+    static QVector<DBTable*> &getTables();
+    static DBTable *getTableById(IdTable idTable);
+    static DBTable *getTableByName(const QString &name);
 private:
     QVector<DBTable*> tables;
 

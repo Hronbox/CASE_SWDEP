@@ -7,8 +7,6 @@ TableFormWidget::TableFormWidget(QWidget *parent) :
 {
         ui->setupUi(this);
 
-
-
         ViewTable view;
 
         model= new QStandardItemModel;
@@ -49,7 +47,7 @@ void TableFormWidget::updateWidgetFromData()//доделать атрибуты
     }
 }
 
-DBTable* &TableFormWidget::getTable()
+DBTable *TableFormWidget::getTable()
 {
     return table;
 }

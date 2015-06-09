@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>749</width>
-    <height>491</height>
+    <width>809</width>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@
    <widget class="QRadioButton" name="tableRadio">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>70</y>
+      <x>690</x>
+      <y>10</y>
       <width>82</width>
       <height>17</height>
      </rect>
@@ -37,8 +37,8 @@
    <widget class="QRadioButton" name="one_to_one">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>90</y>
+      <x>690</x>
+      <y>30</y>
       <width>82</width>
       <height>17</height>
      </rect>
@@ -50,8 +50,8 @@
    <widget class="QRadioButton" name="Editing">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>130</y>
+      <x>690</x>
+      <y>70</y>
       <width>111</width>
       <height>17</height>
      </rect>
@@ -63,8 +63,8 @@
    <widget class="QRadioButton" name="one_to_N">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>110</y>
+      <x>690</x>
+      <y>50</y>
       <width>82</width>
       <height>17</height>
      </rect>
@@ -78,8 +78,8 @@
      <rect>
       <x>20</x>
       <y>0</y>
-      <width>601</width>
-      <height>431</height>
+      <width>661</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -99,8 +99,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>582</width>
-       <height>412</height>
+       <width>642</width>
+       <height>532</height>
       </rect>
      </property>
     </widget>
@@ -111,7 +111,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>749</width>
+     <width>809</width>
      <height>21</height>
     </rect>
    </property>

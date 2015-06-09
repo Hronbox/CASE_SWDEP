@@ -3,6 +3,8 @@
 #include "tableformwidget.h"
 #include <QDebug>
 
+#include "maindata.h"
+
 TableSetting::TableSetting(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TableSetting)
@@ -10,19 +12,20 @@ TableSetting::TableSetting(QWidget *parent) :
     ui->setupUi(this);
 
     ViewTable view;
-
     model= new QStandardItemModel;
-
     model=view.createView();
-
     ui->tableViewSitting->setModel(model);
-
     for (int i=2; i<model->columnCount();i++)
     {
     ui->tableViewSitting->horizontalHeader()->setSectionResizeMode(i,QHeaderView::ResizeToContents);
     }
-
     connect(ui->tableViewSitting,SIGNAL(activated(const QModelIndex &)),ui->tableViewSitting,SLOT(edit(const QModelIndex &)));
+
+    ViewTable vievConection;
+    modelConection = new QStandardItemModel;
+    modelConection = vievConection.createViewConection();
+    ui->tableViewConection->setModel(modelConection);
+
 }
 
 TableSetting::~TableSetting()
@@ -94,6 +97,8 @@ QString TableSetting::tableName() const
 
 void TableSetting::setTable(DBTable &table)//доделать атрибуты
 {
+    idTable = table.getIdTable();
+
     delegate();
 
     item = new QStandardItem(" ");
@@ -118,13 +123,76 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
         model->setItem(i,1,itemType);
         if(itemPK->text().toInt()==1)
         {
+            model->setData(model->index(i,2,QModelIndex()),2,Qt::CheckStateRole);
+        }
+        else
+        {
+            model->setData(model->index(i,2,QModelIndex()),0,Qt::CheckStateRole );
+        }
+        if(itemFK->text().toInt()==1)
+        {
+            Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
+            itemFK->setCheckState(checkState);
+            //model->setItem(i,3,itemFK);
+        }
+        else
+        {
+            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
+            itemFK->setCheckState(checkState);
+            //model->setItem(i,3,itemFK);
+        }
+        if(itemNN->text().toInt()==1)
+        {
+            Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
+            itemNN->setCheckState(checkState);
+           // model->setItem(i,4,itemNN);
+
+        }
+        else
+        {
+            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
+            itemNN->setCheckState(checkState);
+            //model->setItem(i,4,itemNN);
+        }
+        if(itemU->text().toInt()==1)
+        {
             Qt::CheckState checkState = static_cast<Qt::CheckState>(2);
             itemPK->setCheckState(checkState);
-            model->setItem(i,2,itemPK);
+           // model->setItem(i,5,itemU);
+        }
+        else
+        {
+            Qt::CheckState checkState = static_cast<Qt::CheckState>(0);
+            itemPK->setCheckState(checkState);
+           // model->setItem(i,5,itemU);
+        }
+    }
+
+    QVector <IdTable> &foreignTables = table.getForeignTables();
+
+    int countConection = foreignTables.size();
+    qDebug()<<countConection;
+
+    if(countConection>0)
+    {
+        itemConection = new QStandardItem(" ");
+        modelConection->insertRow(countConection,itemConection);
+    }
+
+
+    for(int i=0;i<countConection;i++)
+    {
+        DBTable *table = MainData::getTableById(foreignTables[i]);
+
+        if(table==NULL)
+        {
+            qDebug() << "Тут ошибка короч";
+            exit(2);
         }
 
-
+        modelConection->setItem(i,0,new QStandardItem(table->getName()));
     }
+
 }
 
 DBTable TableSetting::getTable()//доделать атрибуты
@@ -133,6 +201,8 @@ DBTable TableSetting::getTable()//доделать атрибуты
     QVariant myDatName,myDatType,myDatPK,myDatFK,myDatNN,myDatU;
 
     DBTable table;
+
+    table.setIdTable(idTable);
 
     for(int i = 0;i< model->rowCount();i++)
     {
@@ -180,6 +250,21 @@ DBTable TableSetting::getTable()//доделать атрибуты
 
     QString tabname = ui->lineEdit->text();
     table.addName(tabname);
+    for(int i = 0; i < modelConection->rowCount();i++)
+    {
+        auto indexTable=modelConection->index(i,0,QModelIndex());
+        auto dataTable=modelConection->data(indexTable,Qt::DisplayRole);
+
+        DBTable *ptable = MainData::getTableByName(dataTable.toString());
+
+        if(ptable==nullptr)
+        {
+            qDebug() << "Короч в ведьмака нипаиграть";
+            exit(2);
+        }
+
+        table.addConnection(*ptable);
+    }
 
     return table;
 }

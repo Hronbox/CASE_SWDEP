@@ -32,6 +32,8 @@ public:
     bool trigConection1To1;
     bool trigConection1ToM;
     bool trigEdit;
+
+
 protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
     virtual void mouseMoveEvent ( QMouseEvent *mouseEvent );
@@ -46,9 +48,17 @@ signals:
 private slots:
 
 private:
+    void updateLines();
+
+    TableFormWidget *getTableFormById(IdTable idTable);
+
     std::vector< TableFormWidget * > tableForms;
     TableFormWidget *pressedTableForm;
+    TableFormWidget *pressed2TableForm;
     qreal scale;
+    DBTable *selectedTable;
+
+
 };
 
 #endif // CONTAINERWIDGET_H

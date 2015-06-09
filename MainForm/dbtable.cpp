@@ -1,7 +1,12 @@
 #include "dbtable.h"
 
+#include "maindata.h"
+
 DBTable::DBTable()
 {
+    static int globalIdTable = 0;
+
+    idTable = globalIdTable++;
 }
 
 void DBTable::addAttribute(DBAttribute &attribute)
@@ -12,4 +17,9 @@ void DBTable::addAttribute(DBAttribute &attribute)
 void DBTable::addName(QString &name)
 {
     this->name = name;
+}
+
+void DBTable::addConnection(DBTable &table)
+{
+    foreignTables.push_back(table.getIdTable());
 }

@@ -13,13 +13,9 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
     pressedTableForm =  dynamic_cast<TableFormWidget*>(childAt(mouseEvent->x(),mouseEvent->y()));
 
 
-    qDebug()<<childAt(mouseEvent->x(),mouseEvent->y());
-
     if(trigTable == true && pressedTableForm == NULL)
     {
         TableFormWidget *tableForm = new TableFormWidget(this);
-//        palette.setColor( QColor( Qt::red ), QPalette::Background );
-//        tableForm->setPalette(palette);
         tableForm->move(mouseEvent->x(),mouseEvent->y());
 
         auto table = new DBTable;
@@ -32,17 +28,14 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
 
         tableForm->show();
 
-        emit sig();
+        emit sig();//вызываем MainWindow::setgeometryscroll() для отрисовки рабочей области
     }
 
 
     if(trigTable == false && pressedTableForm != NULL)
     {
-        QString name =pressedTableForm->getTable()->getName();
-        qDebug()<<name;
+        selectedTable = pressedTableForm->getTable();
     }
-
-
 
 }
 
@@ -54,15 +47,29 @@ void ContainerWidget::mouseMoveEvent(QMouseEvent *mouseEvent)
     {
         pressedTableForm->move(mouseEvent->x(),mouseEvent->y());
         pressedTableForm->show();
+        update();
     }
+    if(trigConection1To1==true)
+    {
 
+    }
 
 }
 
 void ContainerWidget::mouseReleaseEvent(QMouseEvent *mouseEvent)
 {
+    emit sig();//вызываем MainWindow::setgeometryscroll() для отрисовки рабочей области
+    if(trigConection1To1==true)
+    {
+        pressed2TableForm =  dynamic_cast<TableFormWidget*>(childAt(mouseEvent->x(),mouseEvent->y()));
+
+        if(selectedTable != NULL)
+        {
+            selectedTable->addConnection( *pressed2TableForm->getTable() );
+            update();
+        }
+    }
     pressedTableForm = NULL;
-    emit sig();
 }
 
 void ContainerWidget::wheelEvent(QWheelEvent *event)
@@ -72,12 +79,58 @@ void ContainerWidget::wheelEvent(QWheelEvent *event)
 
 }
 
+void ContainerWidget::updateLines()
+{
+
+}
+
+TableFormWidget *ContainerWidget::getTableFormById(IdTable idTable)
+{
+    for(int i=0;i<tableForms.size();i++)
+    {
+        if(tableForms[i]->getTable()->getIdTable()==idTable)
+            return tableForms[i];
+
+    }
+
+    return NULL;
+}
+
 void ContainerWidget::paintEvent(QPaintEvent *event)
 {
-    QPainter p;
-    p.begin(this);
-    p.scale(scale,scale);
+    QPainter p(this);
+    //p.begin(this);
+   //p.scale(scale,scale);
 
+    p.setRenderHint( QPainter::Antialiasing, true );
+    p.setPen( QPen( Qt::black, 5 ) );
+
+    for(int i=0;i<tableForms.size();i++)
+    {
+        QPoint pos = tableForms[i]->pos();
+
+        pos = QPoint(pos.x()+tableForms[i]->width()/2, pos.y()+tableForms[i]->height()/2);
+
+        QVector<IdTable> &forTables = tableForms[i]->getTable()->getForeignTables();
+
+        for(int j=0;j<forTables.size();j++)
+        {
+            TableFormWidget *formWidget2 = getTableFormById(forTables[j]);
+
+            if(formWidget2==NULL)
+            {
+                qDebug() << "Служу россии!";
+                exit(0);
+            }
+
+            QPoint pos2 = formWidget2->pos();
+            pos2 = QPoint(pos2.x()+formWidget2->width()/2, pos2.y()+formWidget2->height()/2);
+
+            p.drawLine( pos, pos2 );
+        }
+
+
+    }
 }
 
 

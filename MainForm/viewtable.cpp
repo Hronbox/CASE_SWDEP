@@ -21,3 +21,14 @@ QStandardItemModel *ViewTable::createView()
     return model;
 
 }
+
+QStandardItemModel *ViewTable::createViewConection()
+{
+    QStringList horizontalHeader;
+    horizontalHeader.append("Table");
+
+    QStandardItemModel *model= new QStandardItemModel;
+    model->setHorizontalHeaderLabels(horizontalHeader);
+
+    return model;
+}

@@ -23,7 +23,7 @@ QWidget *TypeAttrEditorDelegate::createEditor(QWidget *parent, const QStyleOptio
         if (index.column()>=2)
         {
             QCheckBox *editor = new QCheckBox(parent);
-            editor->installEventFilter(const_cast<TypeAttrEditorDelegate*>(this));
+          //  editor->installEventFilter(const_cast<TypeAttrEditorDelegate*>(this));
 
             return editor;
         }
@@ -47,9 +47,8 @@ void TypeAttrEditorDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         }
         if (index.column()>=2)
         {
-                        QItemDelegate::drawBackground( painter, option, index );
-                        QItemDelegate::drawCheck( painter, option, option.rect, index.data(Qt::EditRole).toBool() ? Qt::Checked : Qt::Unchecked );
-                        drawFocus(painter, option, option.rect);
+            drawCheck(painter, option, option.rect, index.data().toBool() ? Qt::Checked : Qt::Unchecked);
+            drawFocus(painter, option, option.rect);
 
         }
 

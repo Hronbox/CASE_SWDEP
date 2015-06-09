@@ -29,6 +29,7 @@ public:
     ~TableSetting();
 
     QStandardItem *item;
+    QStandardItem *itemConection;
 
     QString tableName() const;
     QVector <Combobox> V;
@@ -44,8 +45,11 @@ private slots:
     void on_MinusItem_clicked();
 
 private:
+    IdTable idTable;
+
     Ui::TableSetting *ui;
     QStandardItemModel *model;
+    QStandardItemModel *modelConection;
     int count;
     void delegate();
 };

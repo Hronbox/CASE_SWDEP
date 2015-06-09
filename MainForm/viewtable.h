@@ -11,6 +11,7 @@ class ViewTable : public QObject
 public:
     explicit ViewTable(QObject *parent = 0);
     QStandardItemModel *createView();
+    QStandardItemModel *createViewConection();
 
 signals:
 
