@@ -9,7 +9,7 @@ QT       += core gui sql
 TARGET = Postgresql
 TEMPLATE = lib
 
-DLLDESTDIR = ../DLL_DIR
+DLLDESTDIR = ../libs
 
 DEFINES += POSTGRESQL_LIBRARY
 
@@ -17,7 +17,7 @@ SOURCES += postgresql.cpp
 
 HEADERS += postgresql.h
 
-INCLUDEPATH += C:/Qt/Project/Fedoseev/CASE_SWDEP/MainForm
+INCLUDEPATH += ../MainForm
 
 unix {
     target.path = /usr/lib

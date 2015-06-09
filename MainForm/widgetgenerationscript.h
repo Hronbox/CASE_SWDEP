@@ -25,7 +25,7 @@ class WidgetGenerationScript : public QDialog
 public:
     explicit WidgetGenerationScript(QWidget *parent = 0);
     ~WidgetGenerationScript();
-    void loadPlugins(QString pathPlugin = "../DLL_DIR");
+    void loadPlugins(QString pathPlugin = "../libs");
 
 private slots:
     void on_comboBoxPlugin_currentIndexChanged(const QString &arg1);
