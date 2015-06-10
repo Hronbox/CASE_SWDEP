@@ -66,7 +66,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Link-512.png</normaloff>../../Link-512.png</iconset>
+      <normaloff>ico/Link-512.png</normaloff>ico/Link-512.png</iconset>
     </property>
    </widget>
    <widget class="QRadioButton" name="Editing">
@@ -92,7 +92,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../1024px-ArrowCross.svg.png</normaloff>../../1024px-ArrowCross.svg.png</iconset>
+      <normaloff>ico/1024px-ArrowCross.svg.png</normaloff>ico/1024px-ArrowCross.svg.png</iconset>
     </property>
    </widget>
    <widget class="QRadioButton" name="one_to_N">
@@ -118,7 +118,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Link-512.png</normaloff>../../Link-512.png</iconset>
+      <normaloff>ico/Link-512.png</normaloff>ico/Link-512.png</iconset>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea">
@@ -176,7 +176,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../arrow-cursor-mouse-pixel.png</normaloff>../../arrow-cursor-mouse-pixel.png</iconset>
+      <normaloff>ico/arrow-cursor-mouse-pixel.png</normaloff>ico/arrow-cursor-mouse-pixel.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -264,7 +264,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../table-delete.png</normaloff>../../table-delete.png</iconset>
+      <normaloff>ico/table-delete.png</normaloff>ico/table-delete.png</iconset>
     </property>
    </widget>
   </widget>
