@@ -44,7 +44,9 @@ public:
     {
         if (TableSetting->objectName().isEmpty())
             TableSetting->setObjectName(QStringLiteral("TableSetting"));
+        TableSetting->setWindowModality(Qt::ApplicationModal);
         TableSetting->resize(442, 391);
+        TableSetting->setModal(true);
         buttonBox = new QDialogButtonBox(TableSetting);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(270, 350, 156, 23));

@@ -21,6 +21,7 @@ public:
     void setIdTable(IdTable _idTable) { idTable = _idTable; }
     QVector <IdTable> &getForeignTables() { return foreignTables; }
 
+    void deleteForeignTables(IdTable _idTable);
 
     void addAttribute(DBAttribute &attribute);
     void addName(QString &name);

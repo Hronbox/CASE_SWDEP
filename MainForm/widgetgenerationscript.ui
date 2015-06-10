@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>WidgetGenerationScript</class>
  <widget class="QDialog" name="WidgetGenerationScript">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -85,7 +88,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButtonGenerate">
    <property name="geometry">
     <rect>
      <x>260</x>

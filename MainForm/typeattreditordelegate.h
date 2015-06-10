@@ -21,14 +21,10 @@ class TypeAttrEditorDelegate : public QItemDelegate
     Q_OBJECT
 public:
     explicit TypeAttrEditorDelegate(QObject *parent = 0);
-    QVector <Combobox> V1;
-
-
     TypeAttrEditorDelegate(const QVector <Combobox> &V,QObject *parent=0): QItemDelegate(parent)
     {
         V1=V;
     }
-
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
@@ -36,6 +32,7 @@ public:
     void setModelData(QWidget *editor, QAbstractItemModel *model,const QModelIndex &index) const;
     void updateEditorGeometry(QWidget *editor,const QStyleOptionViewItem &option,const QModelIndex &index) const;
 
+    QVector <Combobox> V1;
 signals:
 
 public slots:

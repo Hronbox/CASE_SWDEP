@@ -1,11 +1,15 @@
 #include "tableformwidget.h"
 #include "ui_TableForm.h"
 
+#include "containerwidget.h"
+
 TableFormWidget::TableFormWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TableForm)
 {
         ui->setupUi(this);
+
+        setBackgroundRole(QPalette::Light);
 
         ViewTable view;
 
@@ -34,7 +38,7 @@ void TableFormWidget::setTable(DBTable *table)
     this->table = table;
 }
 
-void TableFormWidget::updateWidgetFromData()//доделать атрибуты
+void TableFormWidget::updateWidgetFromData()
 {
     QVector<DBAttribute> &attributes = table->getAttributes();
 
@@ -83,7 +87,8 @@ DBTable *TableFormWidget::getTable()
 }
 
 
-void TableFormWidget::on_pushButton_clicked()
+
+void TableFormWidget::on_pushButtonSetting_clicked()
 {
     TableSetting setting;
 
@@ -100,7 +105,4 @@ void TableFormWidget::on_pushButton_clicked()
 
         updateWidgetFromData();
     }
-
 }
-
-

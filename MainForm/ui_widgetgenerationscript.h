@@ -33,12 +33,13 @@ public:
     QLabel *label_2;
     QLineEdit *lineEditName;
     QTextEdit *textEdit;
-    QPushButton *pushButton;
+    QPushButton *pushButtonGenerate;
 
     void setupUi(QDialog *WidgetGenerationScript)
     {
         if (WidgetGenerationScript->objectName().isEmpty())
             WidgetGenerationScript->setObjectName(QStringLiteral("WidgetGenerationScript"));
+        WidgetGenerationScript->setWindowModality(Qt::ApplicationModal);
         WidgetGenerationScript->resize(400, 300);
         buttonBox = new QDialogButtonBox(WidgetGenerationScript);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
@@ -60,9 +61,9 @@ public:
         textEdit = new QTextEdit(WidgetGenerationScript);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(20, 140, 361, 101));
-        pushButton = new QPushButton(WidgetGenerationScript);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(260, 100, 111, 23));
+        pushButtonGenerate = new QPushButton(WidgetGenerationScript);
+        pushButtonGenerate->setObjectName(QStringLiteral("pushButtonGenerate"));
+        pushButtonGenerate->setGeometry(QRect(260, 100, 111, 23));
 
         retranslateUi(WidgetGenerationScript);
         QObject::connect(buttonBox, SIGNAL(accepted()), WidgetGenerationScript, SLOT(accept()));
@@ -76,7 +77,7 @@ public:
         WidgetGenerationScript->setWindowTitle(QApplication::translate("WidgetGenerationScript", "\320\236\320\272\320\275\320\276 \320\263\320\265\320\275\320\265\321\200\320\260\321\206\320\270\320\270 \321\201\320\272\321\200\320\270\320\277\321\202\320\260", 0));
         label->setText(QApplication::translate("WidgetGenerationScript", "\320\224\321\200\320\260\320\271\320\262\320\265\321\200:", 0));
         label_2->setText(QApplication::translate("WidgetGenerationScript", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \320\261\320\260\320\267\321\213 \320\264\320\260\320\275\320\275\321\213\321\205:", 0));
-        pushButton->setText(QApplication::translate("WidgetGenerationScript", "\320\223\320\265\320\275\320\265\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214", 0));
+        pushButtonGenerate->setText(QApplication::translate("WidgetGenerationScript", "\320\223\320\265\320\275\320\265\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214", 0));
     } // retranslateUi
 
 };

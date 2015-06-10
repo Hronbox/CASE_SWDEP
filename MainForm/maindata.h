@@ -13,6 +13,7 @@ public:
     static QVector<DBTable*> &getTables();
     static DBTable *getTableById(IdTable idTable);
     static DBTable *getTableByName(const QString &name);
+    static void deleteTableByID(IdTable idTable);
 private:
     QVector<DBTable*> tables;
 

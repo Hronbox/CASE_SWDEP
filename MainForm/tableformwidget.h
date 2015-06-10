@@ -23,39 +23,19 @@ class TableFormWidget : public QWidget
 public:
     explicit TableFormWidget(QWidget *parent = 0);
     ~TableFormWidget();
-    void reDrow(QString nameTable);
-    void InsertStructData();
-    QVector <Combobox> V;
-
-
-    QStandardItemModel *tablefromwidget() const;
-
-    int mousePressPointX() const {return xpos;}
-    int mousePressPointY() const {return ypos;}
 
     void setTable(DBTable *table);
-    DBTable *getTable();
+    DBTable *getTable();   
     void updateWidgetFromData();
 
-signals:
-    void sendData(QString str);
-
-
-protected:
-
-public slots:
+    QVector <Combobox> V;
 
 private slots:
-    void on_pushButton_clicked();
-
+    void on_pushButtonSetting_clicked();
 
 private:
     Ui::TableForm *ui;
-    int xpos;
-    int ypos;
-    bool _isBeingDragged;
     QStandardItemModel *model;
-
     DBTable *table;
 };
 

@@ -75,7 +75,7 @@ void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString
     }
 }
 
-void WidgetGenerationScript::on_pushButton_clicked()
+void WidgetGenerationScript::on_pushButtonGenerate_clicked()
 {
     MainData data;
     QVector<DBTable*> tables = MainData::instance()->getTables();

@@ -25,14 +25,15 @@ class ContainerWidget : public QWidget
 public:
     explicit ContainerWidget(QWidget *parent = 0);
 
-
-
-    QWidget *base;
     bool trigTable;
     bool trigConection1To1;
     bool trigConection1ToM;
     bool trigEdit;
+    bool trigDelete;
 
+    static ContainerWidget *getShared();
+
+    void deleteTableFormById(IdTable idTable);
 
 protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
@@ -40,25 +41,26 @@ protected:
     virtual void mouseReleaseEvent ( QMouseEvent *mouseEvent );
     void paintEvent ( QPaintEvent * event );
     void wheelEvent ( QWheelEvent * event );
-    QFormLayout *formlayout;
 
 signals:
     void sig();
-
-private slots:
+    void sigClose();
 
 private:
-    void updateLines();
-
     TableFormWidget *getTableFormById(IdTable idTable);
 
-    std::vector< TableFormWidget * > tableForms;
+    QVector< TableFormWidget * > tableForms;
     TableFormWidget *pressedTableForm;
     TableFormWidget *pressed2TableForm;
+    QWidget *wid;
+    QWidget *wid2;
     qreal scale;
     DBTable *selectedTable;
+    IdTable deleteTableId;
+    QString widgetName;
 
 
+    QPoint offsetMove;
 };
 
 #endif // CONTAINERWIDGET_H

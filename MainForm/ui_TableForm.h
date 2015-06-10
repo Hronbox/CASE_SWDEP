@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -27,48 +26,24 @@ class Ui_TableForm
 public:
     QTableView *tableViewWidget;
     QLabel *label;
-    QPushButton *pushButton;
-    QFrame *line;
-    QFrame *line_2;
-    QFrame *line_3;
-    QFrame *line_4;
+    QPushButton *pushButtonSetting;
 
     void setupUi(QWidget *TableForm)
     {
         if (TableForm->objectName().isEmpty())
             TableForm->setObjectName(QStringLiteral("TableForm"));
         TableForm->setWindowModality(Qt::ApplicationModal);
-        TableForm->resize(250, 190);
+        TableForm->resize(297, 190);
         TableForm->setAutoFillBackground(true);
         tableViewWidget = new QTableView(TableForm);
         tableViewWidget->setObjectName(QStringLiteral("tableViewWidget"));
-        tableViewWidget->setGeometry(QRect(10, 30, 221, 91));
+        tableViewWidget->setGeometry(QRect(-1, 30, 301, 91));
         label = new QLabel(TableForm);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 10, 111, 16));
-        pushButton = new QPushButton(TableForm);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 130, 75, 23));
-        line = new QFrame(TableForm);
-        line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(2, 178, 240, 5));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-        line_2 = new QFrame(TableForm);
-        line_2->setObjectName(QStringLiteral("line_2"));
-        line_2->setGeometry(QRect(0, 0, 5, 180));
-        line_2->setFrameShape(QFrame::VLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-        line_3 = new QFrame(TableForm);
-        line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setGeometry(QRect(240, 0, 5, 180));
-        line_3->setFrameShape(QFrame::VLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-        line_4 = new QFrame(TableForm);
-        line_4->setObjectName(QStringLiteral("line_4"));
-        line_4->setGeometry(QRect(2, 0, 240, 5));
-        line_4->setFrameShape(QFrame::HLine);
-        line_4->setFrameShadow(QFrame::Sunken);
+        pushButtonSetting = new QPushButton(TableForm);
+        pushButtonSetting->setObjectName(QStringLiteral("pushButtonSetting"));
+        pushButtonSetting->setGeometry(QRect(10, 130, 75, 23));
 
         retranslateUi(TableForm);
 
@@ -79,7 +54,7 @@ public:
     {
         TableForm->setWindowTitle(QApplication::translate("TableForm", "\320\236\320\272\320\275\320\276 \320\275\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
         label->setText(QApplication::translate("TableForm", "<html><head/><body><p>\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213</p></body></html>", 0));
-        pushButton->setText(QApplication::translate("TableForm", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0));
+        pushButtonSetting->setText(QApplication::translate("TableForm", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0));
     } // retranslateUi
 
 };

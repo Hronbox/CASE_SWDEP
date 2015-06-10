@@ -13,7 +13,9 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -44,6 +46,13 @@ public:
     QRadioButton *one_to_N;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
+    QRadioButton *radioMause;
+    QLabel *label;
+    QLabel *label_2;
+    QFrame *line;
+    QFrame *line_2;
+    QFrame *line_3;
+    QRadioButton *radioButtonDelete;
     QMenuBar *menuBar;
     QMenu *menu;
     QMenu *menu_2;
@@ -78,30 +87,70 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         tableRadio = new QRadioButton(centralWidget);
         tableRadio->setObjectName(QStringLiteral("tableRadio"));
-        tableRadio->setGeometry(QRect(690, 10, 82, 17));
+        tableRadio->setGeometry(QRect(70, 30, 41, 17));
         QIcon icon;
         icon.addFile(QStringLiteral("ico/table_add.ico"), QSize(), QIcon::Normal, QIcon::Off);
         tableRadio->setIcon(icon);
         one_to_one = new QRadioButton(centralWidget);
         one_to_one->setObjectName(QStringLiteral("one_to_one"));
-        one_to_one->setGeometry(QRect(690, 30, 82, 17));
+        one_to_one->setGeometry(QRect(250, 30, 61, 17));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("../../Link-512.png"), QSize(), QIcon::Normal, QIcon::Off);
+        one_to_one->setIcon(icon1);
         Editing = new QRadioButton(centralWidget);
         Editing->setObjectName(QStringLiteral("Editing"));
-        Editing->setGeometry(QRect(690, 70, 111, 17));
+        Editing->setGeometry(QRect(120, 30, 41, 17));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral("../../1024px-ArrowCross.svg.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Editing->setIcon(icon2);
         one_to_N = new QRadioButton(centralWidget);
         one_to_N->setObjectName(QStringLiteral("one_to_N"));
-        one_to_N->setGeometry(QRect(690, 50, 82, 17));
+        one_to_N->setGeometry(QRect(310, 30, 61, 17));
+        one_to_N->setIcon(icon1);
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(20, 0, 661, 551));
+        scrollArea->setGeometry(QRect(10, 60, 791, 501));
         scrollArea->setContextMenuPolicy(Qt::ActionsContextMenu);
         scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 642, 532));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 772, 482));
         scrollArea->setWidget(scrollAreaWidgetContents);
+        radioMause = new QRadioButton(centralWidget);
+        radioMause->setObjectName(QStringLiteral("radioMause"));
+        radioMause->setGeometry(QRect(10, 30, 31, 17));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral("../../arrow-cursor-mouse-pixel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        radioMause->setIcon(icon3);
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(70, 0, 101, 16));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(250, 0, 46, 16));
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(60, 0, 3, 61));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line_2 = new QFrame(centralWidget);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setGeometry(QRect(240, 0, 3, 61));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+        line_3 = new QFrame(centralWidget);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setGeometry(QRect(400, 0, 3, 61));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+        radioButtonDelete = new QRadioButton(centralWidget);
+        radioButtonDelete->setObjectName(QStringLiteral("radioButtonDelete"));
+        radioButtonDelete->setGeometry(QRect(170, 30, 82, 17));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral("../../table-delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        radioButtonDelete->setIcon(icon4);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -140,7 +189,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\276\320\272\320\275\320\276 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\213", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "CASE_SWDEP", 0));
 #ifndef QT_NO_ACCESSIBILITY
         MainWindow->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
@@ -153,10 +202,65 @@ public:
         close->setText(QApplication::translate("MainWindow", "\320\222\321\213\321\205\320\276\320\264", 0));
         action_8->setText(QApplication::translate("MainWindow", "\320\240\321\203\320\272\320\276\320\262\320\276\320\264\321\201\321\202\320\262\320\276 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", 0));
         action_9->setText(QApplication::translate("MainWindow", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", 0));
+#ifndef QT_NO_TOOLTIP
+        tableRadio->setToolTip(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\202\320\260\320\261\320\273\320\270\321\206\321\203", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        tableRadio->setStatusTip(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\202\320\260\320\261\320\273\320\270\321\206\321\203", 0));
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        tableRadio->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
         tableRadio->setText(QString());
-        one_to_one->setText(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:1", 0));
-        Editing->setText(QApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", 0));
-        one_to_N->setText(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:N", 0));
+#ifndef QT_NO_TOOLTIP
+        one_to_one->setToolTip(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:1", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        one_to_one->setStatusTip(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:1", 0));
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        one_to_one->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+        one_to_one->setText(QApplication::translate("MainWindow", "1:1", 0));
+#ifndef QT_NO_TOOLTIP
+        Editing->setToolTip(QApplication::translate("MainWindow", "\320\237\320\265\321\200\320\265\320\274\320\265\321\211\320\265\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        Editing->setStatusTip(QApplication::translate("MainWindow", "\320\237\320\265\321\200\320\265\320\274\320\265\321\211\320\265\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206", 0));
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        Editing->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+        Editing->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        one_to_N->setToolTip(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:N", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        one_to_N->setStatusTip(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\321\214 1:N", 0));
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        one_to_N->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+        one_to_N->setText(QApplication::translate("MainWindow", "1:N", 0));
+#ifndef QT_NO_TOOLTIP
+        radioMause->setToolTip(QApplication::translate("MainWindow", "\320\234\321\213\321\210\321\214", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        radioMause->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        radioMause->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+        radioMause->setText(QString());
+        label->setText(QApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \321\202\320\260\320\261\320\273\320\270\321\206\320\260\320\274\320\270", 0));
+        label_2->setText(QApplication::translate("MainWindow", "\320\241\320\262\321\217\320\267\320\270", 0));
+#ifndef QT_NO_TOOLTIP
+        radioButtonDelete->setToolTip(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\265\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        radioButtonDelete->setStatusTip(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\265\320\275\320\270\320\265 \321\202\320\260\320\261\320\273\320\270\321\206\321\213", 0));
+#endif // QT_NO_STATUSTIP
+        radioButtonDelete->setText(QString());
         menu->setTitle(QApplication::translate("MainWindow", "\320\244\320\260\320\270\320\273", 0));
         menu_2->setTitle(QApplication::translate("MainWindow", "\320\224\320\265\320\271\321\201\321\202\320\262\320\270\321\217", 0));
         menu_3->setTitle(QApplication::translate("MainWindow", "\320\241\320\277\321\200\320\260\320\262\320\272\320\260", 0));

@@ -1,5 +1,7 @@
 #include "maindata.h"
 
+#include "containerwidget.h"
+
 MainData::MainData()
 {
 }
@@ -48,4 +50,27 @@ DBTable *MainData::getTableByName(const QString &name)
     }
 
     return NULL;
+}
+
+void MainData::deleteTableByID(IdTable idTable)
+{
+    QVector<DBTable*> &tables = MainData::getTables();
+
+    for(int i=0;i<tables.size();i++)
+    {
+        if(tables[i]->getIdTable() == idTable)
+        {
+            for(int j=0;j<tables.size();j++)
+            {
+                tables[j]->deleteForeignTables(idTable);
+            }
+
+            ContainerWidget::getShared()->deleteTableFormById(idTable);
+
+            delete tables[i];
+
+            //удалить из вектора таблицу
+            tables.remove(i);
+        }
+    }
 }

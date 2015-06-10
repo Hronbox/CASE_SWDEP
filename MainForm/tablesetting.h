@@ -27,31 +27,27 @@ class TableSetting : public QDialog
 public:
     explicit TableSetting(QWidget *parent = 0);
     ~TableSetting();
+    QString tableName() const;
+    void setTable(DBTable &table);
+    DBTable getTable();
 
     QStandardItem *item;
     QStandardItem *itemConection;
-
-    QString tableName() const;
     QVector <Combobox> V;
 
-    void setTable(DBTable &table);
-
-    DBTable getTable();
-
 private slots:
-
     void on_PlusItem_clicked();
-
     void on_MinusItem_clicked();
 
 private:
-    IdTable idTable;
+    void delegate();
 
+    IdTable idTable;
     Ui::TableSetting *ui;
     QStandardItemModel *model;
     QStandardItemModel *modelConection;
     int count;
-    void delegate();
+
 };
 
 #endif // TABLESETTING_H

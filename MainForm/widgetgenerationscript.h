@@ -29,12 +29,10 @@ public:
 
 private slots:
     void on_comboBoxPlugin_currentIndexChanged(const QString &arg1);
-
-    void on_pushButton_clicked();
+    void on_pushButtonGenerate_clicked();
 
 private:
     Ui::WidgetGenerationScript *ui;
-    void controlLoadPlugin(QString);
     QVector <DBPluginInterface*> plugins;
 };
 
