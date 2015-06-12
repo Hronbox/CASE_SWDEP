@@ -210,7 +210,7 @@ void ContainerWidget::paintEvent(QPaintEvent *event)
 
             p.setPen(QPen( Qt::white, 10 ));
             p.drawText((pos2.x()+(pos.x()*0.7))/(1+0.7),(pos2.y()+(pos.y()*0.7))/(1+0.7),"FT");
-            p.setPen( QPen( Qt::black, 5 ) );
+            p.setPen( QPen( Qt::black, 5 ));
 
             if(trigEdit==true||trigConection1To1==true||trigConection1ToM==true)
             {

@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     dbtable.cpp \
     dbattribute.cpp \
     maindata.cpp \
-    viewtable.cpp
+    viewtable.cpp \
+    dbforeign.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     dbattribute.h \
     dbplugininterface.h \
     maindata.h \
-    viewtable.h
+    viewtable.h \
+    dbforeign.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

@@ -25,6 +25,7 @@ QStandardItemModel *ViewTable::createViewConection()
 {
     QStringList horizontalHeader;
     horizontalHeader.append("Table");
+    horizontalHeader.append("Type");
 
     QStandardItemModel *model= new QStandardItemModel;
     model->setHorizontalHeaderLabels(horizontalHeader);

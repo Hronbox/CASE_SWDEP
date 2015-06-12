@@ -8,7 +8,7 @@
 
 #include "dbattribute.h"
 
-typedef static int IdTable;
+typedef int IdTable;
 
 #include "dbforeign.h"
 

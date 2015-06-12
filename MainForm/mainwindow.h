@@ -34,6 +34,9 @@ private slots:
     void on_one_to_one_clicked();
     void on_one_to_N_clicked();
     void on_Editing_clicked();
+    void on_radioButtonDelete_clicked();
+    void on_radioMause_clicked();
+
 
     void on_close_triggered();
     void on_createSript_triggered();
@@ -41,9 +44,9 @@ private slots:
     void setgeometryscroll();
     void closeallradio();
 
-    void on_radioMause_clicked();
 
-    void on_radioButtonDelete_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

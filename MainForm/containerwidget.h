@@ -39,6 +39,7 @@ protected:
     virtual void mousePressEvent( QMouseEvent *mouseEvent );
     virtual void mouseMoveEvent ( QMouseEvent *mouseEvent );
     virtual void mouseReleaseEvent ( QMouseEvent *mouseEvent );
+    virtual void mouseDoubleClickEvent( QMouseEvent *mouseEvent );
     void paintEvent ( QPaintEvent * event );
     void wheelEvent ( QWheelEvent * event );
 
@@ -53,12 +54,11 @@ private:
     TableFormWidget *pressedTableForm;
     TableFormWidget *pressed2TableForm;
     QWidget *wid;
-    QWidget *wid2;
+    QVector<QLabel *>labels;
+    int countConection;
     qreal scale;
     DBTable *selectedTable;
     IdTable deleteTableId;
-    QString widgetName;
-
 
     QPoint offsetMove;
 };
