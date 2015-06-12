@@ -2,14 +2,12 @@
 #define DBFOREIGN_H
 #include <QString>
 
-typedef int IdTable;
-
 class DBForeign
 {
 public:
     DBForeign();
 
-    IdTable foreignTablesId;
+    int foreignTablesId;
     QString typeforeign;
 };
 
