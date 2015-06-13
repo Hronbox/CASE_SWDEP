@@ -8,7 +8,7 @@
 
 #include "dbattribute.h"
 
-typedef static int IdTable;
+typedef int IdTable;
 
 #include "dbforeign.h"
 
@@ -21,20 +21,21 @@ public:
     QString &getName() { return name; }
     IdTable getIdTable() { return idTable; }
     void setIdTable(IdTable _idTable) { idTable = _idTable; }
-    QVector <IdTable> &getForeignTables() { return foreignTables; }
+    QVector <DBForeign> &getForeigns() { return foreigns; }
 
-    void deleteForeignTables(IdTable _idTable);
+    void deleteForeignById(IdTable _idTable);
+    void deleteAtribute(int numberAtribute);
 
     void addAttribute(DBAttribute &attribute);
     void addName(QString &name);
-    void addConnection(DBTable &table);
+    void addConnection(DBForeign foreig);
 
 private:
     IdTable idTable;
 
     QString name;
     QVector <DBAttribute> attributes;
-    QVector <IdTable> foreignTables;
+    QVector <DBForeign> foreigns;
 
 signals:
 

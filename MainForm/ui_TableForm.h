@@ -38,6 +38,11 @@ public:
         tableViewWidget = new QTableView(TableForm);
         tableViewWidget->setObjectName(QStringLiteral("tableViewWidget"));
         tableViewWidget->setGeometry(QRect(-1, 30, 301, 91));
+        tableViewWidget->setAcceptDrops(false);
+        tableViewWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableViewWidget->setTabKeyNavigation(false);
+        tableViewWidget->setProperty("showDropIndicator", QVariant(false));
+        tableViewWidget->setDragDropOverwriteMode(false);
         label = new QLabel(TableForm);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 10, 111, 16));

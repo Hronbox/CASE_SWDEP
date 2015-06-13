@@ -25,8 +25,7 @@ SOURCES += main.cpp\
     dbtable.cpp \
     dbattribute.cpp \
     maindata.cpp \
-    viewtable.cpp \
-    dbforeign.cpp
+    viewtable.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
@@ -45,3 +44,6 @@ FORMS    += mainwindow.ui \
     TableForm.ui \
     tablesetting.ui \
     widgetgenerationscript.ui
+
+RESOURCES += \
+    icon.qrc

@@ -62,7 +62,7 @@ void MainData::deleteTableByID(IdTable idTable)
         {
             for(int j=0;j<tables.size();j++)
             {
-                tables[j]->deleteForeignTables(idTable);
+                tables[j]->deleteForeignById(idTable);
             }
 
             ContainerWidget::getShared()->deleteTableFormById(idTable);

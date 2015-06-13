@@ -1,5 +1,4 @@
 #include "postgresql.h"
-#include <QStringList>
 
 
 DBTable *getTableFromId(QVector<DBTable *> &tables, IdTable idTable)
@@ -19,9 +18,18 @@ Postgresql::Postgresql()
 {
 }
 
+QString Postgresql::getVersion()
+{
+    return "1.0";
+}
+
+QString Postgresql::getName()
+{
+    return "Postgresql";
+}
+
 QString Postgresql::getCreateScript(QVector<DBTable *> &tables)
 {
-        QStringList mainscript;
         QString script="";
         for(int i=0;i<tables.size();i++)
         {
@@ -62,11 +70,11 @@ QString Postgresql::getCreateScript(QVector<DBTable *> &tables)
                 }  
             }
 
-            QVector<IdTable> &foreignTables = tables[i]->getForeignTables();
+            QVector<DBForeign> &foreigns = tables[i]->getForeigns();
 
-            for(int k=0;k<foreignTables.size();k++)
+            for(int k=0;k<foreigns.size();k++)
             {
-                DBTable *table = getTableFromId(tables, foreignTables[k]);
+                DBTable *table = getTableFromId(tables, foreigns[k].foreignTableId);
 
                 QVector<DBAttribute> &attributes = table->getAttributes();
 

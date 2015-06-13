@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>809</width>
-    <height>617</height>
+    <width>976</width>
+    <height>709</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,8 +39,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/table_add.ico</normaloff>ico/table_add.ico</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/table_add.ico</normaloff>:/ico/table_add.ico</iconset>
     </property>
    </widget>
    <widget class="QRadioButton" name="one_to_one">
@@ -65,8 +65,8 @@
      <string>1:1</string>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/Link-512.png</normaloff>ico/Link-512.png</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/Link-512.png</normaloff>:/ico/Link-512.png</iconset>
     </property>
    </widget>
    <widget class="QRadioButton" name="Editing">
@@ -91,8 +91,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/1024px-ArrowCross.svg.png</normaloff>ico/1024px-ArrowCross.svg.png</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/1024px-ArrowCross.svg.png</normaloff>:/ico/1024px-ArrowCross.svg.png</iconset>
     </property>
    </widget>
    <widget class="QRadioButton" name="one_to_N">
@@ -117,8 +117,8 @@
      <string>1:N</string>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/Link-512.png</normaloff>ico/Link-512.png</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/Link-512.png</normaloff>:/ico/Link-512.png</iconset>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea">
@@ -126,8 +126,8 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>791</width>
-      <height>501</height>
+      <width>961</width>
+      <height>591</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -147,8 +147,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>772</width>
-       <height>482</height>
+       <width>942</width>
+       <height>572</height>
       </rect>
      </property>
     </widget>
@@ -175,8 +175,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/arrow-cursor-mouse-pixel.png</normaloff>ico/arrow-cursor-mouse-pixel.png</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/arrow-cursor-mouse-pixel.png</normaloff>:/ico/arrow-cursor-mouse-pixel.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -263,8 +263,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>ico/table-delete.png</normaloff>ico/table-delete.png</iconset>
+     <iconset resource="icon.qrc">
+      <normaloff>:/ico/table-delete.png</normaloff>:/ico/table-delete.png</iconset>
     </property>
    </widget>
   </widget>
@@ -273,7 +273,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>809</width>
+     <width>976</width>
      <height>21</height>
     </rect>
    </property>
@@ -361,6 +361,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icon.qrc"/>
+ </resources>
  <connections/>
 </ui>

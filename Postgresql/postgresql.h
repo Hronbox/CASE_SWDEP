@@ -12,8 +12,8 @@ class Postgresql : public DBPluginInterface
 public:
     Postgresql();
 
-    QString getVersion()    { return "1.0"; }
-    QString getName()       { return "Postgresql"; }
+    QString getVersion();
+    QString getName();
     QString getCreateScript(QVector<DBTable*> &tables);
 
     ~Postgresql() {}

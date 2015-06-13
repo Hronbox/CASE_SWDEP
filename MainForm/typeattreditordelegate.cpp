@@ -12,7 +12,7 @@ QWidget *TypeAttrEditorDelegate::createEditor(QWidget *parent, const QStyleOptio
     editor->setCurrentIndex(0);
     for (int i=0;i<V1.size();i++)
     {
-        if ((index.row()==V1[i].r)&&(index.column()==V1[i].c))
+        if (index.column()==1)
         {
            if(V1[i].elemnt != index.data())
            editor->addItems(V1[i].elemnt);
@@ -40,11 +40,6 @@ void TypeAttrEditorDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     //QPalette::ColorGroup cg = o.state & QStyle::State_FocusAtBorder ? QPalette::Normal : QPalette::Disabled;
     for (int i=0;i<V1.size();i++)
     {
-        if ((index.row()==V1[i].r)&&(index.column()==V1[i].c))
-        {
-            //o.font.setItalic(true);
-            //painter->fillRect(option.rect, option.palette.color(cg, QPalette::Highlight));
-        }
         if (index.column()>=2)
         {
             drawCheck(painter, option, option.rect, index.data().toBool() ? Qt::Checked : Qt::Unchecked);
@@ -60,7 +55,7 @@ void TypeAttrEditorDelegate::setEditorData(QWidget *editor,const QModelIndex &in
 {
     for (int i=0;i<V1.size();i++)
     {
-        if ((index.row()==V1[i].r)&&(index.column()==V1[i].c))
+        if (index.column()==1)
         {
             int value = index.model()->data(index, Qt::EditRole).toInt();
             QComboBox *comboBox = static_cast< QComboBox*>(editor);
@@ -89,7 +84,7 @@ void TypeAttrEditorDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
 {
     for (int i=0;i<V1.size();i++)
     {
-        if ((index.row()==V1[i].r)&&(index.column()==V1[i].c))
+        if (index.column()==1)
         {
             QComboBox *comboBox = static_cast< QComboBox*>(editor);
             QString value=comboBox->currentText();
@@ -99,9 +94,32 @@ void TypeAttrEditorDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
         if (index.column()>=2)
         {
             QCheckBox *checkBox = static_cast<QCheckBox*>(editor);
-                int value = (int)(checkBox->checkState());
+            int value = (int)(checkBox->checkState());
 
-                model->setData(index, value, Qt::CheckStateRole);
+            model->setData(index, value, Qt::CheckStateRole);
+
+            if(index.column() == 2)
+            {
+                 model->setData(model->index(index.row(), 3), 2, Qt::CheckStateRole);
+                 model->setData(model->index(index.row(), 4), 2, Qt::CheckStateRole);
+            }
+
+            if(index.column() == 3)
+            {
+                int PK = index.model()->data(index.model()->index(index.row(), 2), Qt::CheckStateRole).toInt();
+                if(PK==2)
+                {
+                    model->setData(index, 2, Qt::CheckStateRole);
+                }
+            }
+            if(index.column() == 4)
+            {
+                int PK = index.model()->data(index.model()->index(index.row(), 2), Qt::CheckStateRole).toInt();
+                if(PK==2)
+                {
+                    model->setData(index, 2, Qt::CheckStateRole);
+                }
+            }
         }
         if (index.column()==0)
         {

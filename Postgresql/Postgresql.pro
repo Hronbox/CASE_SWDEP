@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       -=gui
 
 TARGET = Postgresql
 TEMPLATE = lib

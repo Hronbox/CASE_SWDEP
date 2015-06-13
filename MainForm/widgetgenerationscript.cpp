@@ -30,6 +30,7 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
     #endif
 
 
+
     QStringList combo;
     combo<<"Выберите драйвер";
 
@@ -43,6 +44,11 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
             if(loader.isLoaded() == false)
             {
                 qDebug() << QString("Can't load a plugin");
+                QMessageBox msgBoxError;
+                msgBoxError.setWindowTitle("Ошибка");
+                msgBoxError.setIcon(QMessageBox::Critical);
+                msgBoxError.setText("Ошибка загрузки плагина "+ filesList[i]);
+                msgBoxError.exec();
                 continue;
             }
             QObject * obj = loader.instance();
@@ -65,7 +71,9 @@ void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString
     {
         if (plugins[i]->getName()==arg1)
         {
-            msgBox.setText(plugins[i]->getVersion());
+            msgBox.setWindowTitle("Версия плагина");
+            msgBox.setIcon(QMessageBox::Information);
+            msgBox.setText("Текущая версия плагина "+plugins[i]->getVersion());
             msgBox.exec();
         }
     }

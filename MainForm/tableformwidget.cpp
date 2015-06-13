@@ -9,11 +9,13 @@ TableFormWidget::TableFormWidget(QWidget *parent) :
 {
         ui->setupUi(this);
 
+
         setBackgroundRole(QPalette::Light);
 
         ViewTable view;
 
         model= new QStandardItemModel;
+
 
         model=view.createView();
 
@@ -42,6 +44,14 @@ void TableFormWidget::updateWidgetFromData()
 {
     QVector<DBAttribute> &attributes = table->getAttributes();
 
+    if(model->rowCount()>attributes.size())
+    {
+        while(model->rowCount()!=attributes.size())
+        {
+            model->removeRow(model->rowCount()-1);
+        }
+    }
+
     for(int i=0;i<attributes.size();i++)
     {
         DBAttribute &attribute = attributes[i];
@@ -51,6 +61,8 @@ void TableFormWidget::updateWidgetFromData()
         QStandardItem *itemPK = new QStandardItem(attribute.PK);
         QStandardItem *itemNN = new QStandardItem(attribute.NN);
         QStandardItem *itemU = new QStandardItem(attribute.UNIQ);
+
+        //model->setRowCount(0);
 
         model->setItem(i,0,itemName);
         model->setItem(i,1,itemType);

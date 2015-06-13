@@ -33,61 +33,6 @@ TableSetting::~TableSetting()
     delete ui;
 }
 
-//void TableSetting::SetModelinSetting(QStandardItemModel *modelset)
-//{
-//  //model1=modelset;
-//  //ui->tableViewSitting->setModel(modelset);
-//    int rowc = modelset->rowCount();
-//    for(int i = 0;i< modelset->rowCount();i++)
-//    {
-//        count = model1->rowCount();
-//        Combobox cb;
-//        cb.c=1;
-//        cb.r=count;
-//        cb.elemnt.push_back("int");
-//        cb.elemnt.push_back("varchar");
-//        cb.elemnt.push_back("bool");
-
-//        V.push_back(cb);
-
-//        TypeAttrEditorDelegate * cl = new TypeAttrEditorDelegate(V,ui->tableViewSitting);
-//        ui->tableViewSitting->setItemDelegate(cl);
-//        for(int j=0;j<modelset->columnCount();j++)
-//        {
-//            QModelIndex myIn;
-//            QVariant myDat;
-//            QStandardItem *item;
-//            if (j>=2)
-//            {
-//                myIn=modelset->index(i,j,QModelIndex());
-//                myDat=modelset->data(myIn,Qt::CheckStateRole);
-//                QStandardItem *item1 = static_cast<QStandardItem*>(myIn.internalPointer());
-//                Qt::CheckState checkState = static_cast<Qt::CheckState>(myDat.toInt());
-//                item1->setCheckState(checkState);
-//                qDebug()<<item1;
-//            }
-//            else
-//            {
-//                myIn=modelset->index(i,j,QModelIndex());
-//                myDat=modelset->data(myIn,Qt::DisplayRole);
-//                item = new QStandardItem(myDat.toString());
-//                model1->setItem(i,j, item);
-//            }
-
-
-
-//            //QModelIndex myIn=modelset->index(i,j,QModelIndex());
-//            //QVariant myDat=modelset->data(myIn,Qt::DisplayRole);
-//            //qDebug()<<myDat;
-//           // model1->setItemData(myIn, myDat);
-//            //qDebug()<<model1->item(i,j);
-//            QString temp = modelset->item(i,j)->text();
-//            model1->item(i,j)->setText(temp);
-//        }
-//    }
-//    ui->tableViewSitting->setModel(model1);
-//}
-
 QString TableSetting::tableName() const
 {
     QString name;
@@ -98,8 +43,9 @@ QString TableSetting::tableName() const
 void TableSetting::setTable(DBTable &table)//доделать атрибуты
 {
     idTable = table.getIdTable();
+    tableForDeleteAtribute = table;
 
-    delegate();
+
 
     item = new QStandardItem(" ");
     model->insertRow(count,item);
@@ -107,6 +53,10 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
     ui->lineEdit->setText(table.getName());
 
     QVector<DBAttribute> &attributes = table.getAttributes();
+
+    count = attributes.size();
+    delegate();
+    qDebug()<<count;
 
     for(int i=0;i<attributes.size();i++)
     {
@@ -146,10 +96,9 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
         }
     }
 
-    QVector <IdTable> &foreignTables = table.getForeignTables();
+    QVector <DBForeign> &foreigns = table.getForeigns();
 
-    int countConection = foreignTables.size();
-    qDebug()<<countConection;
+    int countConection = foreigns.size();
 
     if(countConection>0)
     {
@@ -160,9 +109,18 @@ void TableSetting::setTable(DBTable &table)//доделать атрибуты
 
     for(int i=0;i<countConection;i++)
     {
-        DBTable *table = MainData::getTableById(foreignTables[i]);
+        DBTable *table = MainData::getTableById(foreigns[i].foreignTableId);
 
         modelConection->setItem(i,0,new QStandardItem(table->getName()));
+
+        if(foreigns[i].typeForeign == DBForeign::ONE_TO_ONE)
+        {
+            modelConection->setItem(i,1,new QStandardItem("1:1"));
+        }
+        else
+        {
+            modelConection->setItem(i,1,new QStandardItem("1:N"));
+        }
     }
 
 }
@@ -225,10 +183,14 @@ DBTable TableSetting::getTable()//доделать атрибуты
     {
         auto indexTable=modelConection->index(i,0,QModelIndex());
         auto dataTable=modelConection->data(indexTable,Qt::DisplayRole);
-
         DBTable *ptable = MainData::getTableByName(dataTable.toString());
 
-        table.addConnection(*ptable);
+        indexTable=modelConection->index(i,1,QModelIndex());
+        dataTable=modelConection->data(indexTable,Qt::DisplayRole);
+
+        DBForeign::TypeForeign typeForeign = dataTable.toString() == "1:1" ? DBForeign::ONE_TO_ONE : DBForeign::ONE_TO_MANY;
+
+        table.addConnection(DBForeign(ptable->getIdTable(), typeForeign));
     }
 
     return table;
@@ -237,27 +199,28 @@ DBTable TableSetting::getTable()//доделать атрибуты
 
 void TableSetting::on_PlusItem_clicked()
 {
-delegate();
+    item = new QStandardItem(" ");
+    model->insertRow(count,item);
+    count++;
 
-item = new QStandardItem(" ");
-model->insertRow(count,item);
-ui->tableViewSitting->setModel(model);
+    qDebug()<<count;
+    ui->tableViewSitting->setModel(model);
 }
 
 void TableSetting::on_MinusItem_clicked()
 {
+    tableForDeleteAtribute.deleteAtribute(ui->tableViewSitting->currentIndex().row());
     model->removeRow(ui->tableViewSitting->currentIndex().row());
 }
 
 void TableSetting::delegate()
 {
-    count = model->rowCount();
     Combobox cb;
-    cb.c=1;
-    cb.r=count;
-    cb.elemnt.push_back("int");
-    cb.elemnt.push_back("varchar");
-    cb.elemnt.push_back("bool");
+    cb.elemnt.push_back("INT");
+    cb.elemnt.push_back("VARCHAR");
+    cb.elemnt.push_back("BOOLEAN");
+    cb.elemnt.push_back("REAL");
+    cb.elemnt.push_back("DOUBLE");
 
     V.push_back(cb);
 

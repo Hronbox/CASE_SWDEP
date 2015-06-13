@@ -1,14 +1,33 @@
 #ifndef DBFOREIGN_H
 #define DBFOREIGN_H
-#include <QString>
+
+typedef int IdTable;
 
 class DBForeign
 {
 public:
-    DBForeign();
 
-    int foreignTablesId;
-    QString typeforeign;
+    enum TypeForeign
+    {
+        ONE_TO_ONE,
+        ONE_TO_MANY
+    };
+
+    DBForeign(IdTable forIdTable, TypeForeign typeFor):
+        foreignTableId(forIdTable),
+        typeForeign(typeFor)
+    {}
+
+    DBForeign(){}
+
+    bool operator==(const DBForeign &two)
+    {
+        return foreignTableId == two.foreignTableId;
+    }
+
+    IdTable foreignTableId;
+    TypeForeign typeForeign;
+
 };
 
 #endif // DBFOREIGN_H

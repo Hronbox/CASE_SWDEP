@@ -1,4 +1,5 @@
 #include "containerwidget.h"
+#include <QMessageBox>
 
 ContainerWidget *shared;
 
@@ -44,7 +45,7 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
     if(wid != NULL)
     {
         //widgetName = wid->objectName();
-        //qDebug()<<wid;
+//        qDebug()<<wid;
         if(wid->objectName()=="")
         {
             wid->setObjectName("connectLabels");
@@ -79,6 +80,9 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
         emit sig();//вызываем MainWindow::setgeometryscroll() для отрисовки рабочей области
     }
 
+    if(pressedTableForm == NULL)
+        return;
+
     if(trigEdit==true  && wid != NULL)//если что-то есть - зажатая лапка, нужно узнавать что именно под курсором
     {
         QApplication::setOverrideCursor(QCursor(Qt::ClosedHandCursor));
@@ -89,11 +93,30 @@ void ContainerWidget::mousePressEvent(QMouseEvent *mouseEvent)
     if((trigConection1To1==true||trigConection1ToM==true) && pressedTableForm != NULL)
     { 
         selectedTable = pressedTableForm->getTable();
+        bool ok = false;
+        QVector<DBAttribute> tempattr =  selectedTable->getAttributes();
+        for(int i = 0;i<tempattr.size();i++)
+        {
+            if(tempattr[i].PK=="1")
+            {
+                ok = true;
+            }
+        }
+        if(ok==false)
+        {
+            QMessageBox msgBoxError;
+            msgBoxError.setWindowTitle("Ошибка");
+            msgBoxError.setIcon(QMessageBox::Critical);
+            msgBoxError.setText("Отсутствует первичный ключ в таблице "+selectedTable->getName());
+            msgBoxError.exec();
+            return;
+        }
     }
 
-    if(trigDelete==true)
+    if(trigDelete==true&&pressedTableForm!=NULL)
     {
         deleteTableId = pressedTableForm->getTable()->getIdTable();
+        //labels[deleteTableId-1]->hide();
         MainData::deleteTableByID(deleteTableId);
     }
 }
@@ -115,36 +138,39 @@ void ContainerWidget::mouseReleaseEvent(QMouseEvent *mouseEvent)
 {
     emit sig();//вызываем MainWindow::setgeometryscroll() для отрисовки рабочей области
     pressed2TableForm =  dynamic_cast<TableFormWidget*>(childAt(mouseEvent->x(),mouseEvent->y()));
+
+    if(trigEdit==true)
+    {
+        QApplication::setOverrideCursor(QCursor(Qt::OpenHandCursor));
+    }
+
     if(pressed2TableForm==pressedTableForm||pressed2TableForm==NULL)
         return;
+
 
     if(trigConection1To1==true||trigConection1ToM==true)
     {
 
         if(selectedTable != NULL)
         {
+            DBForeign::TypeForeign typeForeign;
+
             if(trigConection1To1==true)
             {
-                QLabel *newLabel = new QLabel(this);
-                newLabel->setText("1:1");
-                labels.push_back(newLabel);
+                typeForeign = DBForeign::ONE_TO_ONE;
             }
-            if(trigConection1To1==true)
+            if(trigConection1ToM==true)
             {
-                QLabel *newLabel = new QLabel(this);
-                newLabel->setText("1:N");
-                labels.push_back(newLabel);
+                typeForeign = DBForeign::ONE_TO_MANY;
             }
-            selectedTable->addConnection( *pressed2TableForm->getTable() );
+
+            selectedTable->addConnection( DBForeign( pressed2TableForm->getTable()->getIdTable(), typeForeign) );
             update();
         }
         countConection++;
     }
 
-    if(trigEdit==true)
-    {
-        QApplication::setOverrideCursor(QCursor(Qt::OpenHandCursor));
-    }
+
 //    if(pressed2TableForm == NULL)
 //    {
 //        QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
@@ -196,28 +222,29 @@ void ContainerWidget::paintEvent(QPaintEvent *event)
 
         pos = QPoint(pos.x()+tableForms[i]->width()/2, pos.y()+tableForms[i]->height()/2);
 
-        QVector<IdTable> &forTables = tableForms[i]->getTable()->getForeignTables();
+        QVector<DBForeign> &forTables = tableForms[i]->getTable()->getForeigns();
 
         for(int j=0;j<forTables.size();j++)
         {
-            TableFormWidget *formWidget2 = getTableFormById(forTables[j]);
+            TableFormWidget *formWidget2 = getTableFormById(forTables[j].foreignTableId);
 
             QPoint pos2 = formWidget2->pos();
             pos2 = QPoint(pos2.x()+formWidget2->width()/2, pos2.y()+formWidget2->height()/2);
 
             p.drawLine( pos, pos2 );
 
-
             p.setPen(QPen( Qt::white, 10 ));
             p.drawText((pos2.x()+(pos.x()*0.7))/(1+0.7),(pos2.y()+(pos.y()*0.7))/(1+0.7),"FT");
+
+            QString textForeign;
+
+            if(forTables[j].typeForeign == DBForeign::ONE_TO_ONE)
+                textForeign = "1:1";
+            else
+                textForeign = "1:N";
+
+            p.drawText((pos.x()+pos2.x())/2,(pos.y()+pos2.y())/2, textForeign);
             p.setPen( QPen( Qt::black, 5 ) );
-
-            if(trigEdit==true||trigConection1To1==true||trigConection1ToM==true)
-            {
-                labels[j]->move((pos.x()+pos2.x())/2,(pos.y()+pos2.y())/2);
-                labels[j]->show();
-            }
-
         }
 
 

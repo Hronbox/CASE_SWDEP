@@ -42,6 +42,7 @@ private slots:
 private:
     void delegate();
 
+    DBTable tableForDeleteAtribute;
     IdTable idTable;
     Ui::TableSetting *ui;
     QStandardItemModel *model;

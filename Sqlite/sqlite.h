@@ -2,7 +2,6 @@
 #define SQLITE_H
 
 #include <dbplugininterface.h>
-#include <QString>
 
 class Sqlite : public DBPluginInterface
 {
@@ -13,8 +12,8 @@ class Sqlite : public DBPluginInterface
 public:
     Sqlite();
 
-    QString getVersion()    { return "1.0"; }
-    QString getName()       { return "Sqlite"; }
+    QString getVersion();
+    QString getName();
     QString getCreateScript(QVector<DBTable*> &tables);
 
     ~Sqlite() {}

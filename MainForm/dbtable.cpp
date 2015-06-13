@@ -9,16 +9,23 @@ DBTable::DBTable()
     idTable = globalIdTable++;
 }
 
-void DBTable::deleteForeignTables(IdTable _idTable)
+void DBTable::deleteForeignById(IdTable _idTable)
 {
-    for(int i = 0;i<foreignTables.size();i++)
+    for(int i = 0;i<foreigns.size();i++)
     {
-        if(foreignTables[i]==_idTable)
+        if(foreigns[i].foreignTableId==_idTable)
         {
             //удалить из вектора запись
-            foreignTables.remove(i);
+            foreigns.remove(i);
         }
     }
+}
+
+void DBTable::deleteAtribute(int numberAtribute)
+{
+    if(attributes.size()==0)
+        return;
+    attributes.remove(numberAtribute);
 }
 
 void DBTable::addAttribute(DBAttribute &attribute)
@@ -31,8 +38,8 @@ void DBTable::addName(QString &name)
     this->name = name;
 }
 
-void DBTable::addConnection(DBTable &table)
+void DBTable::addConnection(DBForeign foreign)
 {
-    foreignTables.push_back(table.getIdTable());
-    foreignTables.erase( std::unique(foreignTables.begin(), foreignTables.end() ), foreignTables.end() );
+    foreigns.push_back(foreign);
+    foreigns.erase( std::unique(foreigns.begin(), foreigns.end() ), foreigns.end() );
 }
