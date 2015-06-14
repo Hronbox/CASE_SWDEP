@@ -82,10 +82,13 @@ QString Sqlite::getCreateScript(QVector<DBTable *> &tables)
             }
         }
 
+        bool foreignTablesEx = false;
         QVector<DBForeign> &foreignTables = tables[i]->getForeigns();
 
         for(int k=0;k<foreignTables.size();k++)
         {
+            foreignTablesEx = true;
+
             DBTable *table = getTableFromId(tables, foreignTables[k].foreignTableId);
 
             QVector<DBAttribute> &attributes = table->getAttributes();
@@ -124,6 +127,31 @@ QString Sqlite::getCreateScript(QVector<DBTable *> &tables)
                     script=script+tables[i]->getAttributes()[attr].name+',';
                 }
             }
+            if(foreignTablesEx==true)
+            {
+                QVector<DBForeign> &foreignTablesforPK = tables[i]->getForeigns();
+
+                for(int k=0;k<foreignTablesforPK.size();k++)
+                {
+                    DBTable *table = getTableFromId(tables, foreignTablesforPK[k].foreignTableId);
+
+                    QVector<DBAttribute> &attributesforPK = table->getAttributes();
+
+                    QString nameAttrforPK="";
+
+                    for(int attr=0;attr<attributesforPK.size();attr++)
+                    {
+                        if(attributesforPK[attr].PK=="1")
+                        {
+                            nameAttrforPK = attributesforPK[attr].name;
+                            break;
+                        }
+                    }
+
+                    script += nameAttrforPK+',';
+                }
+            }
+
             script.resize(script.size()-1);
             script += ")";
 
