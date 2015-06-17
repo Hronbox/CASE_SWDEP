@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     dbtable.cpp \
     dbattribute.cpp \
     maindata.cpp \
-    viewtable.cpp
+    viewtable.cpp \
+    pointintersect.cpp
 
 HEADERS  += mainwindow.h \
     containerwidget.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     dbplugininterface.h \
     maindata.h \
     viewtable.h \
-    dbforeign.h
+    dbforeign.h \
+    pointintersect.h
 
 FORMS    += mainwindow.ui \
     TableForm.ui \

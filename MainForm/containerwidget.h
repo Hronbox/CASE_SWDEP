@@ -54,13 +54,17 @@ private:
     TableFormWidget *pressedTableForm;
     TableFormWidget *pressed2TableForm;
     QWidget *wid;
-    QVector<QLabel *>labels;
     int countConection;
     qreal scale;
     DBTable *selectedTable;
     IdTable deleteTableId;
 
     QPoint offsetMove;
+
+    IdTable selectedLine0 = -1;
+    IdTable selectedLine1 = -1;
+
+    QPoint mousePos;
 };
 
 #endif // CONTAINERWIDGET_H

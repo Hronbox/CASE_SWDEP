@@ -32,7 +32,7 @@ void WidgetGenerationScript::loadPlugins(QString pathPlugin)
 
 
     QStringList combo;
-    combo<<"Выберите драйвер";
+    combo<<"Выберите плагин";
 
         QDir findPlugin(pathPlugin);
         //qDebug()<<findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement);
@@ -77,7 +77,7 @@ void WidgetGenerationScript::on_comboBoxPlugin_currentIndexChanged(const QString
             msgBox.exec();
         }
     }
-    if(arg1=="Выберите драйвер")
+    if(arg1=="Выберите плагин")
     {
 
     }

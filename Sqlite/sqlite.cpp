@@ -38,7 +38,7 @@ QString Sqlite::getCreateScript(QVector<DBTable *> &tables)
     {
         if (tables[i]->getAttributes().size()==0)
         {
-            script = "В таблице "+ tables[i]->getName()+"не найденно ни одного атрибута.\n";
+            script = "В таблице "+ tables[i]->getName()+" не найденно ни одного атрибута.\n";
             return script;
         }
         script = script+"CREATE TABLE " + tables[i]->getName()+" (";
@@ -46,7 +46,7 @@ QString Sqlite::getCreateScript(QVector<DBTable *> &tables)
         {
             if (tables[i]->getAttributes()[j].name==" "||tables[i]->getAttributes()[j].type==" ")
             {
-                script = "В таблице "+ tables[i]->getName()+"неправильно заполнен атрибут.\n";
+                script = "В таблице "+ tables[i]->getName()+" неправильно заполнен атрибут.\n";
                 return script;
             }
             if(j==tables[i]->getAttributes().size()-1)

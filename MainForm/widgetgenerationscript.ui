@@ -52,30 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Драйвер:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>131</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Название базы данных:</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditName">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>60</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
+    <string>Плагин:</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="textEdit">
