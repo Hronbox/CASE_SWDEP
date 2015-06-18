@@ -6,7 +6,7 @@
 #include <QtCore/qplugin.h>
 #include <QtPlugin>
 
-#include <dbtable.h>
+#include "dbtable.h"
 
 class DBPluginInterface : public QObject
 {

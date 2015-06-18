@@ -1,5 +1,4 @@
 #include "dbtable.h"
-
 #include "maindata.h"
 
 DBTable::DBTable()
